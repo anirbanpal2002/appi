@@ -24,6 +24,7 @@ class _MyRegistrationState extends State<MyRegistration> {
       'EMAIL': email,
       'PHONE_NUMBER': ph,
       'VEHICLE_NUMBER': vl,
+      'TYPE_OF_SERVICE': radioValue,
     }).then((value) {
       print('User Added');
       Navigator.push(
@@ -73,7 +74,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                           (states) => Colors.white),
                       toggleable: true,
                       activeColor: Colors.white,
-                      value: "Ambulance",
+                      value: 'AMBULANCE',
                       groupValue: radioValue,
                       onChanged: (value) {
                         setState(() {
@@ -84,8 +85,9 @@ class _MyRegistrationState extends State<MyRegistration> {
                     const Text(
                       "Ambulance",
                       style: TextStyle(
-                        color: Colors.white,
-                      ),
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(width: 100.0),
                     Radio(
@@ -105,6 +107,8 @@ class _MyRegistrationState extends State<MyRegistration> {
                       "Fire",
                       style: TextStyle(
                         color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ],
@@ -290,10 +294,11 @@ class _MyRegistrationState extends State<MyRegistration> {
                         if (_regKey.currentState!.validate()) {
                           print('Valid');
                           addRegistrationDetail(
-                              uncont.value.text,
-                              emailcont.value.text,
-                              phcont.value.text,
-                              vlcont.value.text);
+                            uncont.value.text,
+                            emailcont.value.text,
+                            phcont.value.text,
+                            vlcont.value.text,
+                          );
                         }
                       },
                       child: const Text(
