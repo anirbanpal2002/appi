@@ -13,7 +13,7 @@ class _MyTriggerState extends State<MyTrigger> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           image: DecorationImage(
               image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover)),
       child: Scaffold(
@@ -21,8 +21,8 @@ class _MyTriggerState extends State<MyTrigger> {
         body: Stack(
           children: [
             Container(
-                padding: EdgeInsets.only(left: 50, top: 70),
-                child: Text(
+                padding: const EdgeInsets.only(left: 50, top: 70),
+                child: const Text(
                   'TRIGGER PAGE',
                   style: TextStyle(
                       color: Colors.white,
@@ -43,11 +43,11 @@ class _MyTriggerState extends State<MyTrigger> {
                           fillColor: Colors.white,
                           filled: true,
                           hintText: 'DESTINATION',
-                          prefixIcon: Icon(Icons.verified_user_outlined),
+                          prefixIcon: const Icon(Icons.verified_user_outlined),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     TextField(
@@ -55,11 +55,11 @@ class _MyTriggerState extends State<MyTrigger> {
                           fillColor: Colors.white,
                           filled: true,
                           hintText: 'STARING POINT',
-                          prefixIcon: Icon(Icons.gps_fixed),
+                          prefixIcon: const Icon(Icons.gps_fixed),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(30))),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 30,
                     ),
                     Row(
@@ -71,7 +71,7 @@ class _MyTriggerState extends State<MyTrigger> {
 
                         //),
                         //),
-                        new Text(
+                        const Text(
                           'TRIGGER',
                           style: TextStyle(
                               color: Colors.white,
@@ -83,22 +83,22 @@ class _MyTriggerState extends State<MyTrigger> {
                             onPressed: () {},
                             //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
                             //),),
-                            icon: Icon(
+                            icon: const Icon(
                               Icons.arrow_forward,
                               size: 35,
                             ),
                           ),
                           radius: 40,
-                          backgroundColor: Color(0xFF01579B),
+                          backgroundColor: const Color(0xFF01579B),
                         ),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 50,
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
+                      children: const [
                         //Text('LOG IN',style: TextStyle(
                         //color: Color(0xFFFFFFFF),
                         //  fontSize: 25,
@@ -130,10 +130,10 @@ class _MyTriggerState extends State<MyTrigger> {
                         //),
                       ],
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 35,
                     ),
-                    Row(children: [
+                    Row(children: const [
                       Text(
                         'HELPNo-XXXXXXXXXX \nEmail-captainhydra',
                         style: TextStyle(
