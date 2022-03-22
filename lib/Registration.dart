@@ -16,6 +16,7 @@ class _MyRegistrationState extends State<MyRegistration> {
   TextEditingController phcont = TextEditingController();
   TextEditingController vlcont = TextEditingController();
   final FirebaseFirestore database = FirebaseFirestore.instance;
+  String radioValue = "Ambulance";
 
   void addRegistrationDetail(String un, String email, String ph, String vl) {
     database.collection("Users").add({
@@ -44,283 +45,312 @@ class _MyRegistrationState extends State<MyRegistration> {
               image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Stack(
-          children: [
-            //IconButton(
-            //onPressed: () => {Navigator.pop(context, 'Login')},
-            //icon: Icon(
-            //  Icons.arrow_back,
-            //  size: 30,
-            //  color: Colors.white,
-            //),
-            //padding: EdgeInsets.only(left: 25, top: 30),
-            //child:new Text('Sing in',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
-            //),),
-            //icon: Icon(Icons.arrow_forward),
-            //),
-            Container(
-                padding: const EdgeInsets.only(left: 50, top: 40),
-                child: const Text(
-                  'REGISTRATION',
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold),
-                )),
-            SingleChildScrollView(
-                child: Container(
-              padding: EdgeInsets.only(
-                  top: MediaQuery.of(context).size.height * 0.14,
-                  right: 35,
-                  left: 35),
-              child: Form(
-                key: _regKey,
-                child: Column(
+        appBar: AppBar(
+          backgroundColor: Colors.transparent,
+          elevation: 0.0,
+          title: const Text(
+            'REGISTRATION',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 25,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+        body: SingleChildScrollView(
+            child: Container(
+          padding: const EdgeInsets.only(right: 35, left: 35),
+          child: Form(
+            key: _regKey,
+            child: Column(
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
                   children: [
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      controller: emailcont,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'PLEASE ENTER YOUR USER ID';
-                        }
-                        return null;
+                    Radio(
+                      fillColor: MaterialStateProperty.resolveWith(
+                          (states) => Colors.white),
+                      toggleable: true,
+                      activeColor: Colors.white,
+                      value: "Ambulance",
+                      groupValue: radioValue,
+                      onChanged: (value) {
+                        setState(() {
+                          radioValue = value.toString();
+                        });
                       },
-                      keyboardType: TextInputType.emailAddress,
-                      decoration: InputDecoration(
-                          errorStyle: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'EMAIL',
-                          prefixIcon: const Icon(Icons.email),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30))),
                     ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      controller: phcont,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'PLEASE ENTER YOUR USER ID';
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.phone,
-                      decoration: InputDecoration(
-                          errorStyle: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'Phone Number',
-                          prefixIcon: const Icon(Icons.phone_android),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30))),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      controller: vlcont,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'PLEASE ENTER YOUR USER ID';
-                        }
-                        return null;
-                      },
-                      keyboardType: TextInputType.text,
-                      decoration: InputDecoration(
-                          errorStyle: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'V number',
-                          prefixIcon: const Icon(Icons.car_rental),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30))),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    TextFormField(
-                      controller: uncont,
-                      keyboardType: TextInputType.name,
-                      // key: _regKey,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'PLEASE ENTER USER NAME';
-                        }
-                        return null;
-                      },
-                      decoration: InputDecoration(
-                          errorStyle: const TextStyle(
-                              color: Colors.white,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15),
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: ' PASSWORD ',
-                          prefixIcon: const Icon(Icons.verified_user_rounded),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30))),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        onPrimary: Colors.grey,
-                        shadowColor: Colors.greenAccent,
-                        elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
-                        minimumSize: const Size(345, 50), //////// HERE
+                    const Text(
+                      "Ambulance",
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
-                      onPressed: () {},
-                      label: const Text('UPLOAD PDF OF VL'),
-                      icon: const Icon(Icons.picture_as_pdf_rounded),
                     ),
-
-                    //TextField(
-                    //  decoration:InputDecoration(
-                    //      fillColor: Colors.white,
-                    //      filled: true,
-                    //      hintText: 'V L pdf',
-                    //      prefixIcon: Icon(Icons.picture_as_pdf),
-                    //      border: OutlineInputBorder(
-                    //         borderRadius: BorderRadius.circular(30))) ,
-                    //),
-
-                    const SizedBox(
-                      height: 10,
+                    const SizedBox(width: 100.0),
+                    Radio(
+                      fillColor: MaterialStateProperty.resolveWith(
+                          (states) => Colors.white),
+                      toggleable: true,
+                      activeColor: Colors.white,
+                      value: "Fire",
+                      groupValue: radioValue,
+                      onChanged: (value) {
+                        setState(() {
+                          radioValue = value.toString();
+                        });
+                      },
                     ),
-                    //TextField(
-                    //  decoration:InputDecoration(
-                    //      fillColor: Colors.white,
-                    //      filled: true,
-                    //      hintText: 'H pdf',
-                    //      prefixIcon: Icon(Icons.picture_as_pdf),
-                    //      border: OutlineInputBorder(
-                    //          borderRadius: BorderRadius.circular(30))) ,
-                    //),
-                    ElevatedButton.icon(
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        onPrimary: Colors.grey,
-                        shadowColor: Colors.greenAccent,
-                        elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
-                        minimumSize: const Size(345, 50), //////// HERE
+                    const Text(
+                      "Fire",
+                      style: TextStyle(
+                        color: Colors.white,
                       ),
-                      onPressed: () {},
-                      label: const Text('UPLOAD PDF OF H.L'),
-                      icon: const Icon(Icons.picture_as_pdf_rounded),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        //Text('LOG IN',style: TextStyle(
-                        //color: Color(0xFFFFFFFF),
-                        //  fontSize: 25,
-                        //   fontWeight: FontWeight.w700
-
-                        //),
-                        //),
-                        //CircleAvatar(
-                        //child:
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            primary: Colors.blueAccent.shade700,
-                            onPrimary: Colors.grey,
-                            shadowColor: Colors.greenAccent,
-                            elevation: 3,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(32.0)),
-                            minimumSize: const Size(30, 50),
-                          ),
-                          onPressed: () {
-                            if (_regKey.currentState!.validate()) {
-                              print('Valid');
-                              addRegistrationDetail(
-                                  uncont.value.text,
-                                  emailcont.value.text,
-                                  phcont.value.text,
-                                  vlcont.value.text);
-                            }
-                          },
-                          child: const Text(
-                            'Sign in',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          //icon: Icon(Icons.arrow_forward),
-                        ),
-                        // radius: 50,
-                        // backgroundColor: Color(0xFF01579B),
-                        // ),
-                      ],
-                    ),
-                    const SizedBox(
-                      height: 50,
-                    ),
-                    Row(
-                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        //Text('LOG IN',style: TextStyle(
-                        //color: Color(0xFFFFFFFF),
-                        //  fontSize: 25,
-                        //   fontWeight: FontWeight.w700
-
-                        //),
-                        //),
-                        //CircleAvatar(
-
-                        //icon: Icon(Icons.arrow_forward),
-                         Text(
-                          'HELPNo-XXXXXXXXXX \nEmail-captainhydra',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        //CircleAvatar(
-
-                        //TextButton(
-                        //  onPressed: () => {},
-                        //  child:new Text('FORGOT PASSWORD',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight:FontWeight.bold,
-                        //  ),),
-                        //icon: Icon(Icons.arrow_forward),
-
-                        //),
-
-                        //),
-                      ],
                     ),
                   ],
                 ),
-              ),
-            ))
-          ],
-        ),
+
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: emailcont,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'PLEASE ENTER YOUR USER ID';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.emailAddress,
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: 'EMAIL',
+                      prefixIcon: const Icon(Icons.email),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: phcont,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'PLEASE ENTER YOUR USER ID';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.phone,
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: 'Phone Number',
+                      prefixIcon: const Icon(Icons.phone_android),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: vlcont,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'PLEASE ENTER YOUR USER ID';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.text,
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: 'V number',
+                      prefixIcon: const Icon(Icons.car_rental),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                TextFormField(
+                  controller: uncont,
+                  keyboardType: TextInputType.name,
+                  // key: _regKey,
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'PLEASE ENTER USER NAME';
+                    }
+                    return null;
+                  },
+                  decoration: InputDecoration(
+                      errorStyle: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 15),
+                      fillColor: Colors.white,
+                      filled: true,
+                      hintText: ' PASSWORD ',
+                      prefixIcon: const Icon(Icons.verified_user_rounded),
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30))),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.grey,
+                    shadowColor: Colors.greenAccent,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                    minimumSize: const Size(345, 50), //////// HERE
+                  ),
+                  onPressed: () {},
+                  label: const Text('UPLOAD PDF OF VL'),
+                  icon: const Icon(Icons.picture_as_pdf_rounded),
+                ),
+
+                //TextField(
+                //  decoration:InputDecoration(
+                //      fillColor: Colors.white,
+                //      filled: true,
+                //      hintText: 'V L pdf',
+                //      prefixIcon: Icon(Icons.picture_as_pdf),
+                //      border: OutlineInputBorder(
+                //         borderRadius: BorderRadius.circular(30))) ,
+                //),
+
+                const SizedBox(
+                  height: 10,
+                ),
+                //TextField(
+                //  decoration:InputDecoration(
+                //      fillColor: Colors.white,
+                //      filled: true,
+                //      hintText: 'H pdf',
+                //      prefixIcon: Icon(Icons.picture_as_pdf),
+                //      border: OutlineInputBorder(
+                //          borderRadius: BorderRadius.circular(30))) ,
+                //),
+                ElevatedButton.icon(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.white,
+                    onPrimary: Colors.grey,
+                    shadowColor: Colors.greenAccent,
+                    elevation: 3,
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(32.0)),
+                    minimumSize: const Size(345, 50), //////// HERE
+                  ),
+                  onPressed: () {},
+                  label: const Text('UPLOAD PDF OF H.L'),
+                  icon: const Icon(Icons.picture_as_pdf_rounded),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    //Text('LOG IN',style: TextStyle(
+                    //color: Color(0xFFFFFFFF),
+                    //  fontSize: 25,
+                    //   fontWeight: FontWeight.w700
+
+                    //),
+                    //),
+                    //CircleAvatar(
+                    //child:
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.blueAccent.shade700,
+                        onPrimary: Colors.grey,
+                        shadowColor: Colors.greenAccent,
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(32.0)),
+                        minimumSize: const Size(30, 50),
+                      ),
+                      onPressed: () {
+                        if (_regKey.currentState!.validate()) {
+                          print('Valid');
+                          addRegistrationDetail(
+                              uncont.value.text,
+                              emailcont.value.text,
+                              phcont.value.text,
+                              vlcont.value.text);
+                        }
+                      },
+                      child: const Text(
+                        'Sign in',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 25,
+                            fontWeight: FontWeight.bold),
+                      ),
+                      //icon: Icon(Icons.arrow_forward),
+                    ),
+                    // radius: 50,
+                    // backgroundColor: Color(0xFF01579B),
+                    // ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: const [
+                    //Text('LOG IN',style: TextStyle(
+                    //color: Color(0xFFFFFFFF),
+                    //  fontSize: 25,
+                    //   fontWeight: FontWeight.w700
+
+                    //),
+                    //),
+                    //CircleAvatar(
+
+                    //icon: Icon(Icons.arrow_forward),
+                    Text(
+                      'HELPNo-XXXXXXXXXX \nEmail-captainhydra',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 17,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    //CircleAvatar(
+
+                    //TextButton(
+                    //  onPressed: () => {},
+                    //  child:new Text('FORGOT PASSWORD',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight:FontWeight.bold,
+                    //  ),),
+                    //icon: Icon(Icons.arrow_forward),
+
+                    //),
+
+                    //),
+                  ],
+                ),
+              ],
+            ),
+          ),
+        )),
       ),
     );
   }
