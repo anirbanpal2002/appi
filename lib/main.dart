@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:appi/gps.dart';
 import 'package:flutter/material.dart';
 import 'package:appi/Login.dart';
 import 'package:appi/Registration.dart';
@@ -14,7 +15,7 @@ Future<void> main() async {
   );
   runApp(
     MaterialApp(
-      home: const SplashScreen(),
+      home: const Gps(),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),

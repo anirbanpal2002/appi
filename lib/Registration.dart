@@ -20,7 +20,7 @@ class _MyRegistrationState extends State<MyRegistration> {
 
   void addRegistrationDetail(String un, String email, String ph, String vl) {
     database.collection("Users").add({
-      'USER_NAME': un,
+      'PASSWORD': un,
       'EMAIL': email,
       'PHONE_NUMBER': ph,
       'VEHICLE_NUMBER': vl,
