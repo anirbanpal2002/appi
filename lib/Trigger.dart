@@ -99,35 +99,35 @@ class _MyTriggerState extends State<MyTrigger> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
-                        //Text('LOG IN',style: TextStyle(
-                        //color: Color(0xFFFFFFFF),
-                        //  fontSize: 25,
-                        //   fontWeight: FontWeight.w700
+                        /* Text('LOG IN',style: TextStyle(
+                        color: Color(0xFFFFFFFF),
+                         fontSize: 25,
+                          fontWeight: FontWeight.w700
 
-                        //),
-                        //),
-                        //CircleAvatar(
-                        //TextButton(
-                        //  onPressed: () => {
-                        //    Navigator.pushNamed(context, 'Registration')
-                        //  },
-                        //  child:new Text('SING UP',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight:FontWeight.bold
-                        // ),),
-                        //icon: Icon(Icons.arrow_forward),
+                        ),
+                        ),
+                        CircleAvatar(
+                        TextButton(
+                         onPressed: () => {
+                           Navigator.pushNamed(context, 'Registration')
+                         },
+                         child:new Text('SING UP',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight:FontWeight.bold
+                        ),),
+                        icon: Icon(Icons.arrow_forward),
 
-                        //),
-                        //),
-                        //CircleAvatar(
+                        ),
+                        ),
+                        CircleAvatar(
 
-                        //TextButton(
-                        // onPressed: () => {},
-                        //child:new Text('FORGOT PASSWORD',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight:FontWeight.bold,
-                        //),),
-                        //icon: Icon(Icons.arrow_forward),
+                        TextButton(
+                        onPressed: () => {},
+                        child:new Text('FORGOT PASSWORD',style: TextStyle(color: Colors.white,fontSize: 20,fontWeight:FontWeight.bold,
+                        ),),
+                        icon: Icon(Icons.arrow_forward),
 
-                        //),
+                        ),
 
-                        //),
+                        ),*/
                       ],
                     ),
                     const SizedBox(
