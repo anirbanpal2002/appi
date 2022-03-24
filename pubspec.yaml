@@ -39,6 +39,8 @@ dependencies:
   firebase_storage: ^10.2.9
   path_provider: ^2.0.9
   location: ^4.3.0
+  google_sign_in: ^5.2.4
+  firebase_auth: ^3.3.11
 
 dev_dependencies:
   flutter_test:

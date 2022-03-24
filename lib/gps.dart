@@ -52,15 +52,27 @@ class _GpsState extends State<Gps> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text("Latitude : "),
+            const Text(
+              "Latitude : ",
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+            ),
             Text(
               lat,
             ),
-            const Text("Longitude : "),
+            SizedBox(
+              height: 20,
+            ),
+            const Text(
+              "Longitude : ",
+              style: TextStyle(
+                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+            ),
             Text(
               long,
             ),
@@ -72,6 +84,10 @@ class _GpsState extends State<Gps> {
               },
               child: const Text(
                 "GET",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red),
               ),
             ),
           ],

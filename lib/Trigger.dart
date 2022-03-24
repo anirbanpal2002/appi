@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:appi/gps.dart';
 //import 'package:location/location.dart';
 
 class MyTrigger extends StatefulWidget {
@@ -50,17 +51,17 @@ class _MyTriggerState extends State<MyTrigger> {
                     const SizedBox(
                       height: 30,
                     ),
-                    TextField(
-                      decoration: InputDecoration(
-                          fillColor: Colors.white,
-                          filled: true,
-                          hintText: 'STARING POINT',
-                          prefixIcon: const Icon(Icons.gps_fixed),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30))),
-                    ),
+                    // TextField(
+                    //   decoration: InputDecoration(
+                    //       fillColor: Colors.white,
+                    //       filled: true,
+                    //       hintText: 'STARING POINT',
+                    //       prefixIcon: const Icon(Icons.gps_fixed),
+                    //       border: OutlineInputBorder(
+                    //           borderRadius: BorderRadius.circular(30))),
+                    // ),
                     const SizedBox(
-                      height: 30,
+                      height: 40,
                     ),
                     Row(
                       children: [
@@ -75,21 +76,27 @@ class _MyTriggerState extends State<MyTrigger> {
                           'TRIGGER',
                           style: TextStyle(
                               color: Colors.white,
-                              fontSize: 20,
+                              fontSize: 25,
                               fontWeight: FontWeight.bold),
                         ),
                         CircleAvatar(
                           child: IconButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Gps()));
+                            },
                             //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
                             //),),
                             icon: const Icon(
                               Icons.arrow_forward,
                               size: 35,
+                              color: Colors.white,
                             ),
                           ),
                           radius: 40,
-                          backgroundColor: const Color(0xFF01579B),
+                          backgroundColor: Colors.blueAccent.shade700,
                         ),
                       ],
                     ),
@@ -131,11 +138,11 @@ class _MyTriggerState extends State<MyTrigger> {
                       ],
                     ),
                     const SizedBox(
-                      height: 35,
+                      height: 85,
                     ),
                     Row(children: const [
                       Text(
-                        'HELPNo-XXXXXXXXXX \nEmail-captainhydra',
+                        'HELPNo-XXXXXXXXXX \nEMAIL-ITIRP',
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: 17,

@@ -15,7 +15,7 @@ Future<void> main() async {
   );
   runApp(
     MaterialApp(
-      home: const Gps(),
+      home: const SplashScreen(),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),

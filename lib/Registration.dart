@@ -332,7 +332,7 @@ class _MyRegistrationState extends State<MyRegistration> {
 
                     //icon: Icon(Icons.arrow_forward),
                     Text(
-                      'HELPNo-XXXXXXXXXX \nEmail-captainhydra',
+                      'HELPNo-XXXXXXXXXX \nEMAIL-ITIRP',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 17,
