@@ -1,4 +1,5 @@
 import 'package:appi/Login.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -11,24 +12,45 @@ class MyRegistration extends StatefulWidget {
 
 class _MyRegistrationState extends State<MyRegistration> {
   final _regKey = GlobalKey<FormState>();
-  TextEditingController uncont = TextEditingController();
+  TextEditingController passcont = TextEditingController();
   TextEditingController emailcont = TextEditingController();
   TextEditingController phcont = TextEditingController();
   TextEditingController vlcont = TextEditingController();
   final FirebaseFirestore database = FirebaseFirestore.instance;
   String radioValue = "Ambulance";
+  Future<void> signInWithEmail(String Email, String Password) async {
+    try {
+      UserCredential userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(email: Email, password: Password)
+          .whenComplete(() {
+        print('User Added');
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => const MyLogin()));
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
 
-  void addRegistrationDetail(String un, String email, String ph, String vl) {
+  void addRegistrationDetail(
+      String password, String email, String ph, String vl) {
     database.collection("Users").add({
-      'PASSWORD': un,
+      'PASSWORD': password,
       'EMAIL': email,
       'PHONE_NUMBER': ph,
       'VEHICLE_NUMBER': vl,
       'TYPE_OF_SERVICE': radioValue,
     }).then((value) {
-      print('User Added');
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => const MyLogin()));
+      signInWithEmail(email, password);
+      // print('User Added');
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => const MyLogin()));
       //return true;
     }).catchError((error) {
       print('ERROR');
@@ -190,7 +212,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                   height: 10,
                 ),
                 TextFormField(
-                  controller: uncont,
+                  controller: passcont,
                   keyboardType: TextInputType.name,
                   // key: _regKey,
                   validator: (value) {
@@ -294,7 +316,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                         if (_regKey.currentState!.validate()) {
                           print('Valid');
                           addRegistrationDetail(
-                            uncont.value.text,
+                            passcont.value.text,
                             emailcont.value.text,
                             phcont.value.text,
                             vlcont.value.text,
