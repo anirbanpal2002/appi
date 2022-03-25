@@ -18,8 +18,28 @@ class MyLogin extends StatefulWidget {
 
 class _MyLoginState extends State<MyLogin> {
   final _formKey = GlobalKey<FormState>();
+  TextEditingController passcont = TextEditingController();
+  TextEditingController emailcont = TextEditingController();
   bool hidePassword = true;
   Selected selection = Selected.email;
+
+  Future<void> emailPasswordSignIn(String Email, String Password) async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      UserCredential userCredential = await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: Email, password: Password)
+          .whenComplete(() {
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const MyTrigger()));
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
 
   Future<UserCredential> signInWithGoogle() async {
     // Trigger the authentication flow
@@ -89,6 +109,7 @@ class _MyLoginState extends State<MyLogin> {
         child: Scaffold(
           resizeToAvoidBottomInset: true,
           appBar: AppBar(
+            actions: [],
             backgroundColor: Colors.transparent,
             elevation: 0.0,
             title: const Text(
@@ -208,11 +229,9 @@ class _MyLoginState extends State<MyLogin> {
                             child: TextButton(
                               onPressed: () {
                                 if (_formKey.currentState!.validate()) {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                              const MyTrigger()));
+                                  emailPasswordSignIn(
+                                      emailcont.value.text.toString(),
+                                      passcont.value.text.toString());
                                 }
                               },
                               child: const Text(
