@@ -19,12 +19,13 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   final _formKey = GlobalKey<FormState>();
   TextEditingController passcont = TextEditingController();
-  TextEditingController emailcont = TextEditingController();
+  static TextEditingController emailcont = TextEditingController();
   bool hidePassword = true;
   Selected selection = Selected.email;
 
   Future<void> emailPasswordSignIn(String Email, String Password) async {
     try {
+      print("sign");
       // await FirebaseAuth.instance.signOut();
       UserCredential userCredential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(email: Email, password: Password)
@@ -63,6 +64,7 @@ class _MyLoginState extends State<MyLogin> {
 
   List<Widget> emailSpace = [
     TextFormField(
+      controller: emailcont,
       keyboardType: TextInputType.emailAddress,
       validator: (value) {
         if (value == null || value.isEmpty) {
@@ -209,6 +211,7 @@ class _MyLoginState extends State<MyLogin> {
                           return null;
                         },
                         obscureText: hidePassword,
+                        controller: passcont,
                         decoration: InputDecoration(
                             errorStyle: const TextStyle(
                                 color: Colors.white,
