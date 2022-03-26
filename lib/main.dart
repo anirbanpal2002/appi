@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:appi/Login.dart';
 import 'package:appi/Registration.dart';
 import 'package:appi/Trigger.dart';
+import 'package:appi/Instruction.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -20,6 +21,7 @@ Future<void> main() async {
       routes: {
         'Registration': (context) => const MyRegistration(),
         'Trigger': (context) => const MyTrigger(),
+        'Instruction': (context) => const instruction(),
       },
     ),
   );

@@ -1,3 +1,4 @@
+import 'package:appi/Instruction.dart';
 import 'package:appi/Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
@@ -24,8 +25,10 @@ class _MyRegistrationState extends State<MyRegistration> {
           .createUserWithEmailAndPassword(email: Email, password: Password)
           .whenComplete(() {
         print('User Added');
-        Navigator.push(
-            context, MaterialPageRoute(builder: (context) => const MyLogin()));
+        //Navigator.push(
+        //    context, MaterialPageRoute(builder: (context) => const MyLogin()));
+        Navigator.push(context,
+            MaterialPageRoute(builder: (context) => const instruction()));
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
