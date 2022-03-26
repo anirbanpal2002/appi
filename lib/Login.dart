@@ -25,13 +25,15 @@ class _MyLoginState extends State<MyLogin> {
 
   Future<void> emailPasswordSignIn(String Email, String Password) async {
     try {
-      await FirebaseAuth.instance.signOut();
+      // await FirebaseAuth.instance.signOut();
       UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(email: Email, password: Password)
-          .whenComplete(() {
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const MyTrigger()));
-      });
+              .signInWithEmailAndPassword(email: Email, password: Password)
+              .then((value) => Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const MyTrigger())))
+          as UserCredential;
+
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => const MyTrigger()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -93,7 +95,7 @@ class _MyLoginState extends State<MyLogin> {
           fillColor: Colors.white,
           filled: true,
           hintText: 'Phone Number',
-          prefixIcon: const Icon(Icons.verified_user_rounded),
+          prefixIcon: const Icon(Icons.phone),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     ),
   ];
