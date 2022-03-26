@@ -38,6 +38,13 @@ class _instructionState extends State<instruction> {
                   SizedBox(
                     height: 70,
                   ),
+                  const Text(
+                    '\t \t FOR RETURN PRESS TICK',
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold),
+                  ),
                   IconButton(
                     onPressed: () {
                       Navigator.pushNamed(
