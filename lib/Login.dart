@@ -17,6 +17,8 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
+  bool _isVisible = false;
+  bool _hasPasswordOneNumber = false;
   final _formKey = GlobalKey<FormState>();
   TextEditingController passcont = TextEditingController();
   static TextEditingController emailcont = TextEditingController();
@@ -204,15 +206,32 @@ class _MyLoginState extends State<MyLogin> {
                         height: 30,
                       ),
                       TextFormField(
+                        obscureText: !_isVisible,
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'PLEASE ENTER PASSWORD';
                           }
                           return null;
                         },
-                        obscureText: hidePassword,
+                        //obscureText: hidePassword,
                         controller: passcont,
                         decoration: InputDecoration(
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  _isVisible = !_isVisible;
+                                });
+                              },
+                              icon: _isVisible
+                                  ? Icon(
+                                      Icons.visibility,
+                                      color: Colors.black,
+                                    )
+                                  : Icon(
+                                      Icons.visibility_off,
+                                      color: Colors.grey,
+                                    ),
+                            ),
                             errorStyle: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.bold,

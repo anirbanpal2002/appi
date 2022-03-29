@@ -28,7 +28,7 @@ class _MyRegistrationState extends State<MyRegistration> {
         //Navigator.push(
         //    context, MaterialPageRoute(builder: (context) => const MyLogin()));
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const instruction()));
+            MaterialPageRoute(builder: (context) => const Instruction()));
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -239,20 +239,20 @@ class _MyRegistrationState extends State<MyRegistration> {
                 const SizedBox(
                   height: 10,
                 ),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Colors.grey,
-                    shadowColor: Colors.greenAccent,
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    minimumSize: const Size(345, 50), //////// HERE
-                  ),
-                  onPressed: () {},
-                  label: const Text('UPLOAD PDF OF VL'),
-                  icon: const Icon(Icons.picture_as_pdf_rounded),
-                ),
+                //ElevatedButton.icon(
+                //   style: ElevatedButton.styleFrom(
+                //     primary: Colors.white,
+                //     onPrimary: Colors.grey,
+                //     shadowColor: Colors.greenAccent,
+                //     elevation: 3,
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(32.0)),
+                //     minimumSize: const Size(345, 50), //////// HERE
+                //   ),
+                //   onPressed: () {},
+                //   label: const Text('UPLOAD PDF OF VL'),
+                //   icon: const Icon(Icons.picture_as_pdf_rounded),
+                // ),
 
                 //TextField(
                 //  decoration:InputDecoration(
@@ -264,9 +264,9 @@ class _MyRegistrationState extends State<MyRegistration> {
                 //         borderRadius: BorderRadius.circular(30))) ,
                 //),
 
-                const SizedBox(
-                  height: 10,
-                ),
+                // const SizedBox(
+                //   height: 10,
+                // ),
                 //TextField(
                 //  decoration:InputDecoration(
                 //      fillColor: Colors.white,
@@ -276,23 +276,23 @@ class _MyRegistrationState extends State<MyRegistration> {
                 //      border: OutlineInputBorder(
                 //          borderRadius: BorderRadius.circular(30))) ,
                 //),
-                ElevatedButton.icon(
-                  style: ElevatedButton.styleFrom(
-                    primary: Colors.white,
-                    onPrimary: Colors.grey,
-                    shadowColor: Colors.greenAccent,
-                    elevation: 3,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(32.0)),
-                    minimumSize: const Size(345, 50), //////// HERE
-                  ),
-                  onPressed: () {},
-                  label: const Text('UPLOAD PDF OF H.L'),
-                  icon: const Icon(Icons.picture_as_pdf_rounded),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
+                // ElevatedButton.icon(
+                //   style: ElevatedButton.styleFrom(
+                //     primary: Colors.white,
+                //     onPrimary: Colors.grey,
+                //     shadowColor: Colors.greenAccent,
+                //     elevation: 3,
+                //     shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(32.0)),
+                //     minimumSize: const Size(345, 50), //////// HERE
+                //   ),
+                //   onPressed: () {},
+                //   label: const Text('UPLOAD PDF OF H.L'),
+                //   icon: const Icon(Icons.picture_as_pdf_rounded),
+                // ),
+                // const SizedBox(
+                //   height: 15,
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [

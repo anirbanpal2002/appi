@@ -21,7 +21,7 @@ Future<void> main() async {
       routes: {
         'Registration': (context) => const MyRegistration(),
         'Trigger': (context) => const MyTrigger(),
-        'Instruction': (context) => const instruction(),
+        'Instruction': (context) => const Instruction(),
       },
     ),
   );

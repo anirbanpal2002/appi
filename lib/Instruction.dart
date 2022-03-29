@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-class instruction extends StatefulWidget {
-  const instruction({Key? key}) : super(key: key);
+class Instruction extends StatefulWidget {
+  const Instruction({Key? key}) : super(key: key);
 
   @override
-  State<instruction> createState() => _instructionState();
+  State<Instruction> createState() => _InstructionState();
 }
 
-class _instructionState extends State<instruction> {
+class _InstructionState extends State<Instruction> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         image: DecorationImage(
             image: AssetImage("assets/abd.jpg"), fit: BoxFit.cover),
       ),
@@ -24,8 +24,8 @@ class _instructionState extends State<instruction> {
               child: Column(
                 children: [
                   Text(
-                    "\t \t YOUR REGISTRATION IS COMPLEATE"
-                    "\n\n After one to four hours your conformation massage will send through"
+                    "\t \t YOUR REGISTRATION IS COMPLETE"
+                    "\n\n After ONE to FOUR hours your conformation massage will send through"
                     "\t\t\nyour email and email"
                     "\t \n \n \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t \t THANK YOU",
                     style: TextStyle(
@@ -35,7 +35,7 @@ class _instructionState extends State<instruction> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 70,
                   ),
                   const Text(
