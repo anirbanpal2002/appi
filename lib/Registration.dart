@@ -111,7 +111,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                       "Ambulance",
                       style: TextStyle(
                           color: Colors.white,
-                          fontSize: 20,
+                          fontSize: 18,
                           fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(width: 100.0),
@@ -206,8 +206,11 @@ class _MyRegistrationState extends State<MyRegistration> {
                           fontSize: 15),
                       fillColor: Colors.white,
                       filled: true,
-                      hintText: 'V number',
-                      prefixIcon: const Icon(Icons.car_rental),
+                      hintText: "V NUMBER",
+                      prefixIcon: const Icon(
+                        Icons.car_rental,
+                        size: 30,
+                      ),
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(30))),
                 ),

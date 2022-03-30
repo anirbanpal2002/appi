@@ -21,6 +21,7 @@ Future<void> main() async {
       routes: {
         'Registration': (context) => const MyRegistration(),
         'Trigger': (context) => const MyTrigger(),
+        'Login': (context) => const MyLogin(),
         'Instruction': (context) => const Instruction(),
       },
     ),

@@ -46,23 +46,23 @@ class _MyLoginState extends State<MyLogin> {
     }
   }
 
-  Future<UserCredential> signInWithGoogle() async {
-    // Trigger the authentication flow
-    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  // Future<UserCredential> signInWithGoogle() async {
+  // Trigger the authentication flow
+  // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-    // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+  // Obtain the auth details from the request
+  // final GoogleSignInAuthentication? googleAuth =
+  //     await googleUser?.authentication;
 
-    // Create a new credential
-    final credential = GoogleAuthProvider.credential(
-      accessToken: googleAuth?.accessToken,
-      idToken: googleAuth?.idToken,
-    );
+  // Create a new credential
+  // final credential = GoogleAuthProvider.credential(
+  //   accessToken: googleAuth?.accessToken,
+  //   idToken: googleAuth?.idToken,
+  // );
 
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithCredential(credential);
-  }
+  // Once signed in, return the UserCredential
+  // return await FirebaseAuth.instance.signInWithCredential(credential);
+  // }
 
   List<Widget> emailSpace = [
     TextFormField(
@@ -272,26 +272,26 @@ class _MyLoginState extends State<MyLogin> {
                           SizedBox(
                             width: 150,
                           ),
-                          ElevatedButton(
-                            style: ElevatedButton.styleFrom(
-                                primary: Colors.blueAccent.shade700,
-                                side: BorderSide(width: 3, color: Colors.black),
-                                elevation: 3,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30)),
-                                padding: EdgeInsets.all(20)),
-                            onPressed: () {
-                              signInWithGoogle();
-                            },
-                            child: const Text(
-                              "google \n sign in",
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
+                          // ElevatedButton(
+                          //   style: ElevatedButton.styleFrom(
+                          //       primary: Colors.blueAccent.shade700,
+                          //       side: BorderSide(width: 3, color: Colors.black),
+                          //       elevation: 3,
+                          //       shape: RoundedRectangleBorder(
+                          //           borderRadius: BorderRadius.circular(30)),
+                          //       padding: EdgeInsets.all(20)),
+                          //   onPressed: () {
+                          //     signInWithGoogle();
+                          //   },
+                          //   child: const Text(
+                          //     "google \n sign in",
+                          //     style: TextStyle(
+                          //       color: Colors.white,
+                          //       fontSize: 20,
+                          //       fontWeight: FontWeight.bold,
+                          //     ),
+                          //   ),
+                          // ),
                         ],
                       )
                     ],

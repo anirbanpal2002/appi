@@ -49,7 +49,7 @@ class _InstructionState extends State<Instruction> {
                     onPressed: () {
                       Navigator.pushNamed(
                         context,
-                        'Registration',
+                        'Login',
                       );
                     },
                     //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
