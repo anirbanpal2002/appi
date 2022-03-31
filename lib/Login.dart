@@ -30,7 +30,7 @@ class _MyLoginState extends State<MyLogin> {
       // await FirebaseAuth.instance.signOut();
       UserCredential userCredential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(email: Email, password: Password)
-              .then((value) => Navigator.push(context,
+              .then((value) => Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context) => const MyTrigger())))
           as UserCredential;
 

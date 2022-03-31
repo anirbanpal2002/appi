@@ -124,7 +124,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                           fontSize: 18,
                           fontWeight: FontWeight.bold),
                     ),
-                    const SizedBox(width: 100.0),
+                    const SizedBox(width: 90.0),
                     Radio(
                       fillColor: MaterialStateProperty.resolveWith(
                           (states) => Colors.white),
