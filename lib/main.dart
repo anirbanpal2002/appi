@@ -21,7 +21,6 @@ Future<void> main() async {
       routes: {
         'Registration': (context) => const MyRegistration(),
         'Trigger': (context) => const MyTrigger(),
-        'Login': (context) => const MyLogin(),
         'Instruction': (context) => const Instruction(),
       },
     ),
@@ -63,7 +62,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(
-        Duration(seconds: 5),
+        Duration(seconds: 10),
         () => Navigator.pushReplacement(
             context, MaterialPageRoute(builder: (context) => MyLogin())));
   }

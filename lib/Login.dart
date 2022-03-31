@@ -1,7 +1,6 @@
 import 'package:appi/Trigger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 //import 'package:flutter/painting.dart';
 
@@ -47,23 +46,23 @@ class _MyLoginState extends State<MyLogin> {
     }
   }
 
-  // Future<UserCredential> signInWithGoogle() async {
-  // Trigger the authentication flow
-  // final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
+  Future<UserCredential> signInWithGoogle() async {
+    // Trigger the authentication flow
+    final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
-  // Obtain the auth details from the request
-  // final GoogleSignInAuthentication? googleAuth =
-  //     await googleUser?.authentication;
+    // Obtain the auth details from the request
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
-  // Create a new credential
-  // final credential = GoogleAuthProvider.credential(
-  //   accessToken: googleAuth?.accessToken,
-  //   idToken: googleAuth?.idToken,
-  // );
+    // Create a new credential
+    final credential = GoogleAuthProvider.credential(
+      accessToken: googleAuth?.accessToken,
+      idToken: googleAuth?.idToken,
+    );
 
-  // Once signed in, return the UserCredential
-  // return await FirebaseAuth.instance.signInWithCredential(credential);
-  // }
+    // Once signed in, return the UserCredential
+    return await FirebaseAuth.instance.signInWithCredential(credential);
+  }
 
   List<Widget> emailSpace = [
     TextFormField(
@@ -247,56 +246,62 @@ class _MyLoginState extends State<MyLogin> {
                       const SizedBox(
                         height: 30,
                       ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            primary: Colors.blueAccent.shade700,
+                            side: BorderSide(width: 3, color: Colors.black),
+                            elevation: 3,
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30)),
+                            padding: EdgeInsets.all(20)),
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            emailPasswordSignIn(emailcont.value.text.toString(),
+                                passcont.value.text.toString());
+                          }
+                        },
+                        child: const Text(
+                          'log in',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 25,
+                              fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                      /*Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         children: [
-                          Center(
-                            child: CircleAvatar(
-                              child: TextButton(
-                                onPressed: () {
-                                  if (_formKey.currentState!.validate()) {
-                                    emailPasswordSignIn(
-                                        emailcont.value.text.toString(),
-                                        passcont.value.text.toString());
-                                  }
-                                },
-                                child: const Text(
-                                  'log in',
-                                  style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.bold),
-                                ),
-                              ),
-                              radius: 40,
-                              backgroundColor: Colors.blueAccent.shade700,
-                            ),
+                          CircleAvatar(
+                            child: TextButton(
+
+                            radius: 40,
+                            backgroundColor: Colors.blueAccent.shade700,
                           ),
                           SizedBox(
                             width: 150,
                           ),
-                          // ElevatedButton(
-                          //   style: ElevatedButton.styleFrom(
-                          //       primary: Colors.blueAccent.shade700,
-                          //       side: BorderSide(width: 3, color: Colors.black),
-                          //       elevation: 3,
-                          //       shape: RoundedRectangleBorder(
-                          //           borderRadius: BorderRadius.circular(30)),
-                          //       padding: EdgeInsets.all(20)),
-                          //   onPressed: () {
-                          //     signInWithGoogle();
-                          //   },
-                          //   child: const Text(
-                          //     "google \n sign in",
-                          //     style: TextStyle(
-                          //       color: Colors.white,
-                          //       fontSize: 20,
-                          //       fontWeight: FontWeight.bold,
-                          //     ),
-                          //   ),
-                          // ),
+                          ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                                primary: Colors.blueAccent.shade700,
+                                side: BorderSide(width: 3, color: Colors.black),
+                                elevation: 3,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(30)),
+                                padding: EdgeInsets.all(20)),
+                            onPressed: () {
+                              signInWithGoogle();
+                            },
+                            child: const Text(
+                              "google \n sign in",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
                         ],
-                      )
+                      )*/
                     ],
                   ),
                 ),
