@@ -64,6 +64,16 @@ class _MyRegistrationState extends State<MyRegistration> {
   }
 
   @override
+  void dispose() {
+    // super.dispose();
+    passcont.dispose();
+    emailcont.dispose();
+    vlcont.dispose();
+    phcont.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
