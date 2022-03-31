@@ -1,6 +1,7 @@
 import 'package:appi/Trigger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 //import 'package:flutter/painting.dart';
 
@@ -247,27 +248,29 @@ class _MyLoginState extends State<MyLogin> {
                         height: 30,
                       ),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          CircleAvatar(
-                            child: TextButton(
-                              onPressed: () {
-                                if (_formKey.currentState!.validate()) {
-                                  emailPasswordSignIn(
-                                      emailcont.value.text.toString(),
-                                      passcont.value.text.toString());
-                                }
-                              },
-                              child: const Text(
-                                'log in',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.bold),
+                          Center(
+                            child: CircleAvatar(
+                              child: TextButton(
+                                onPressed: () {
+                                  if (_formKey.currentState!.validate()) {
+                                    emailPasswordSignIn(
+                                        emailcont.value.text.toString(),
+                                        passcont.value.text.toString());
+                                  }
+                                },
+                                child: const Text(
+                                  'log in',
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.bold),
+                                ),
                               ),
+                              radius: 40,
+                              backgroundColor: Colors.blueAccent.shade700,
                             ),
-                            radius: 40,
-                            backgroundColor: Colors.blueAccent.shade700,
                           ),
                           SizedBox(
                             width: 150,
