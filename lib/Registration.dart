@@ -21,10 +21,14 @@ class _MyRegistrationState extends State<MyRegistration> {
   String radioValue = "Ambulance";
   Future<void> signInWithEmail(String Email, String Password) async {
     try {
+      passcont.clear();
+      emailcont.clear();
+      phcont.clear();
+      vlcont.clear();
       UserCredential userCredential = await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: Email, password: Password)
           .whenComplete(() {
-        print('User Added');
+        //print('User Added');
         //Navigator.push(
         //    context, MaterialPageRoute(builder: (context) => const MyLogin()));
         Navigator.push(context,

@@ -39,9 +39,21 @@ class _MyLoginState extends State<MyLogin> {
       //     context, MaterialPageRoute(builder: (context) => const MyTrigger()));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
-        print('No user found for that email.');
+        // print('No user found for that email.');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("No user found for that email."),
+            duration: Duration(seconds: 5),
+          ),
+        );
       } else if (e.code == 'wrong-password') {
-        print('Wrong password provided for that user.');
+        // print('Wrong password provided for that user.');
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text("Wrong password provided for that user."),
+            duration: Duration(seconds: 5),
+          ),
+        );
       }
     }
   }
