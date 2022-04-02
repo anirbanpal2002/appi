@@ -106,6 +106,8 @@ class _MyLoginState extends State<MyLogin> {
   @override
   void dispose() {
     // super.dispose();
+    passcont.clear();
+    emailcont.clear();
     passcont.dispose();
     emailcont.dispose();
     super.dispose();
