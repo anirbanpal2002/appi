@@ -26,7 +26,8 @@ class _MyLoginState extends State<MyLogin> {
 
   Future<void> emailPasswordSignIn(String Email, String Password) async {
     try {
-      print("sign");
+      passcont.clear();
+      emailcont.clear();
       // await FirebaseAuth.instance.signOut();
       UserCredential userCredential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(email: Email, password: Password)
@@ -106,8 +107,6 @@ class _MyLoginState extends State<MyLogin> {
   @override
   void dispose() {
     // super.dispose();
-    passcont.clear();
-    emailcont.clear();
     passcont.dispose();
     emailcont.dispose();
     super.dispose();
