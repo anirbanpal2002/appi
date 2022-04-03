@@ -22,6 +22,7 @@ Future<void> main() async {
         'Registration': (context) => const MyRegistration(),
         'Trigger': (context) => const MyTrigger(),
         'Instruction': (context) => const Instruction(),
+        'login': (context) => const MyLogin(),
       },
     ),
   );

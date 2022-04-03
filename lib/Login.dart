@@ -51,7 +51,7 @@ class _MyLoginState extends State<MyLogin> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("Wrong password provided for that user."),
-            duration: Duration(seconds: 5),
+            duration: Duration(seconds: 2),
           ),
         );
       }
