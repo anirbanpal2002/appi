@@ -1,3 +1,4 @@
+import 'package:appi/Login.dart';
 import 'package:flutter/material.dart';
 
 class Instruction extends StatefulWidget {
@@ -47,10 +48,10 @@ class _InstructionState extends State<Instruction> {
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.pushNamed(
-                        context,
-                        'Login',
-                      );
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MyLogin()));
                     },
                     //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
                     //),),

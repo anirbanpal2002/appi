@@ -28,7 +28,6 @@ class _MyLoginState extends State<MyLogin> {
     try {
       passcont.clear();
       emailcont.clear();
-      // await FirebaseAuth.instance.signOut();
       UserCredential userCredential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(email: Email, password: Password)
               .then((value) => Navigator.pushReplacement(context,

@@ -48,7 +48,7 @@ class _SplashScreenState extends State<SplashScreen> {
             body: Stack(children: [
               Container(
                   alignment: Alignment.center,
-                  child: Text(
+                  child: const Text(
                     'WELCOME TO APPI',
                     style: TextStyle(
                         color: Colors.white,
