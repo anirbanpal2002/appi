@@ -1,21 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    const appTitle = 'CIPHERS';
-    return const MaterialApp(
-      home: PaymentScreen(),
-      title: appTitle,
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({Key? key}) : super(key: key);
 
@@ -26,120 +10,104 @@ class PaymentScreen extends StatefulWidget {
 class _PaymentScreenState extends State<PaymentScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        backgroundColor: Colors.deepPurpleAccent,
-        title: const Center(
-            child: Text(
-          'PAYMENT OPTIONS',
-          style: TextStyle(
-            fontSize: 30,
-            color: Colors.white,
-          ),
-        )),
+    return Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+            image: AssetImage("assets/payment.jpg"), fit: BoxFit.cover),
       ),
-      backgroundColor: Colors.deepPurple.shade700,
-      body: SingleChildScrollView(
-        child: SizedBox(
-          width: double.infinity,
-          child: Column(children: [
-            const SizedBox(
-              height: 90,
-            ),
-            Container(
-                margin: const EdgeInsets.all(7),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PlayFont.PlayFont()));*/
-                  },
-                  label: const Text('PLAYFAIR CIPHER',
-                      style: TextStyle(fontSize: 20)),
-                  icon: const Icon(Icons.play_arrow),
-                  style: ElevatedButton.styleFrom(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    primary: Colors.deepOrange,
-                    padding: const EdgeInsets.all(16),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          child: Form(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blueAccent.shade700,
+                        side: BorderSide(width: 0, color: Colors.black),
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        padding: EdgeInsets.all(20)),
+                    onPressed: () {
+                      /*setState(() {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => ));
+                      });*/
+                    },
+                    child: const Text(
+                      'NET BANKING',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ),
                   ),
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-                margin: const EdgeInsets.all(7),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ));*/
-                  },
-                  label: const Text('CAESAR CIPHER',
-                      style: TextStyle(fontSize: 20)),
-                  icon: const Icon(Icons.play_arrow),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(200, 50),
-                    maximumSize: const Size(270, 80),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    primary: Colors.deepOrange,
-                    padding: const EdgeInsets.all(16),
+                  SizedBox(
+                    height: 200,
                   ),
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-                margin: const EdgeInsets.all(7),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const ));*/
-                  },
-                  label:
-                      const Text('OTP CIPHER', style: TextStyle(fontSize: 20)),
-                  icon: const Icon(Icons.play_arrow),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(200, 50),
-                    maximumSize: const Size(270, 80),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    primary: Colors.deepOrange,
-                    padding: const EdgeInsets.all(16),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blueAccent.shade700,
+                        side: BorderSide(width: 0, color: Colors.black),
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        padding: EdgeInsets.all(20)),
+                    onPressed: () {
+                      /*setState(() {
+                        setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ));
+                        });
+                      });*/
+                    },
+                    child: const Text(
+                      'CARD PAYMENT',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ),
                   ),
-                )),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-                margin: const EdgeInsets.all(7),
-                child: ElevatedButton.icon(
-                  onPressed: () {
-                    /*Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const CipherFront()));*/
-                  },
-                  label:
-                      const Text('OTTENDORF', style: TextStyle(fontSize: 20)),
-                  icon: const Icon(Icons.play_arrow),
-                  style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(200, 50),
-                    maximumSize: const Size(270, 80),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30)),
-                    primary: Colors.deepOrange,
-                    padding: const EdgeInsets.all(16),
+                  SizedBox(
+                    height: 200,
                   ),
-                )),
-            Column(children: []),
-          ]),
+                  ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        primary: Colors.blueAccent.shade700,
+                        side: BorderSide(width: 0, color: Colors.black),
+                        elevation: 3,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(30)),
+                        padding: EdgeInsets.all(20)),
+                    onPressed: () {
+                      /*setState(() {
+                        setState(() {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => ));
+                        });
+                      });*/
+                    },
+                    child: const Text(
+                      'UPI',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 25,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
         ),
       ),
     );
