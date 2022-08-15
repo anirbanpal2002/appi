@@ -42,7 +42,7 @@ class _MyLoginState extends State<MyLogin> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
             content: Text("No user found for that email."),
-            duration: Duration(seconds: 5),
+            duration: Duration(seconds: 2),
           ),
         );
       } else if (e.code == 'wrong-password') {
