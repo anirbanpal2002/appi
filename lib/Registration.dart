@@ -344,7 +344,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                         }
                       },
                       child: const Text(
-                        'MAKE \n PAYMENT',
+                        'SIGN IN',
                         style: TextStyle(
                             color: Colors.white,
                             fontSize: 25,
