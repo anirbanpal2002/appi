@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:appi/CraditCard.dart';
+import 'package:appi/GoogleMap.dart';
 import 'package:appi/gps.dart';
 import 'package:flutter/material.dart';
 import 'package:appi/Login.dart';
@@ -7,6 +9,7 @@ import 'package:appi/Registration.dart';
 import 'package:appi/Trigger.dart';
 import 'package:appi/Instruction.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -14,9 +17,10 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
   runApp(
     MaterialApp(
-      home: const SplashScreen(),
+      home: CreditCard(),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
