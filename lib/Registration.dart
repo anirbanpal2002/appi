@@ -3,6 +3,7 @@ import 'package:appi/Login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'PaymentScreen.dart';
 
 class MyRegistration extends StatefulWidget {
   const MyRegistration({Key? key}) : super(key: key);
@@ -32,7 +33,7 @@ class _MyRegistrationState extends State<MyRegistration> {
         //Navigator.push(
         //    context, MaterialPageRoute(builder: (context) => const MyLogin()));
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const Instruction()));
+            MaterialPageRoute(builder: (context) => const PaymentScreen()));
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
