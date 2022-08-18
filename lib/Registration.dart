@@ -33,7 +33,7 @@ class _MyRegistrationState extends State<MyRegistration> {
         //Navigator.push(
         //    context, MaterialPageRoute(builder: (context) => const MyLogin()));
         Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const Paymen));
+            MaterialPageRoute(builder: (context) => const PaymentScreen()));
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
