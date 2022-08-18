@@ -20,7 +20,7 @@ Future<void> main() async {
   AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
   runApp(
     MaterialApp(
-      home: CreditCard(),
+      home: SplashScreen(),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),

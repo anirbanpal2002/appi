@@ -66,7 +66,7 @@ class CreditCardState extends State<CreditCard> {
                   expiryDate: expiryDate,
                   cardHolderName: cardHolderName,
                   cvvCode: cvvCode,
-                  bankName: 'Axis Bank',
+                  bankName: '',
                   showBackView: isCvvFocused,
                   obscureCardNumber: true,
                   obscureCardCvv: true,
@@ -141,7 +141,7 @@ class CreditCardState extends State<CreditCard> {
                         const SizedBox(
                           height: 20,
                         ),
-                        Row(
+                        /*Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
                             const Text(
@@ -182,7 +182,7 @@ class CreditCardState extends State<CreditCard> {
                               }),
                             ),
                           ],
-                        ),
+                        ),*/
                         const SizedBox(
                           height: 20,
                         ),

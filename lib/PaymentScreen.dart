@@ -1,3 +1,4 @@
+import 'package:appi/CraditCard.dart';
 import 'package:flutter/material.dart';
 
 class PaymentScreen extends StatefulWidget {
@@ -13,7 +14,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
     return Container(
       decoration: const BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("assets/payment.jpg"), fit: BoxFit.cover),
+            image: AssetImage("assets/bg.png"), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -26,20 +27,22 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.blueAccent.shade700,
+                        primary: Colors.red.shade700,
                         side: BorderSide(width: 0, color: Colors.black),
                         elevation: 3,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                            borderRadius: BorderRadius.circular(10)),
                         padding: EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
-                        /* Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => ));*/
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CreditCard()));
                       });
                     },
                     child: const Text(
-                      'Card',
+                      'Credit Card',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
@@ -51,11 +54,11 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.blueAccent.shade700,
+                        primary: Colors.red.shade700,
                         side: BorderSide(width: 0, color: Colors.black),
                         elevation: 3,
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                            borderRadius: BorderRadius.circular(10)),
                         padding: EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
