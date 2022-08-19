@@ -55,7 +55,7 @@ class CreditCardState extends State<CreditCard> {
           ),
           child: SafeArea(
             child: Column(
-              children: <Widget>[
+              children: [
                 const SizedBox(
                   height: 30,
                 ),
