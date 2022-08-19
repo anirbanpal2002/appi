@@ -35,63 +35,63 @@ class CreditCardState extends State<CreditCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Credit Card View Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
-          decoration: BoxDecoration(
-            image: !useBackgroundImage
-                ? const DecorationImage(
-                    image: ExactAssetImage('assets/bg.png'),
-                    fit: BoxFit.fill,
-                  )
-                : null,
-            color: Colors.black,
-          ),
-          child: SafeArea(
-            child: Column(
-              children: <Widget>[
-                const SizedBox(
-                  height: 30,
-                ),
-                CreditCardWidget(
-                  glassmorphismConfig:
-                      useGlassMorphism ? Glassmorphism.defaultConfig() : null,
-                  cardNumber: cardNumber,
-                  expiryDate: expiryDate,
-                  cardHolderName: cardHolderName,
-                  cvvCode: cvvCode,
-                  bankName: '',
-                  showBackView: isCvvFocused,
-                  obscureCardNumber: true,
-                  obscureCardCvv: true,
-                  isHolderNameVisible: true,
-                  cardBgColor: Colors.red,
-                  backgroundImage:
-                      useBackgroundImage ? 'assets/card_bg.png' : null,
-                  isSwipeGestureEnabled: true,
-                  onCreditCardWidgetChange:
-                      (CreditCardBrand creditCardBrand) {},
-                  customCardTypeIcons: <CustomCardTypeIcon>[
-                    CustomCardTypeIcon(
-                      cardType: CardType.mastercard,
-                      cardImage: Image.asset(
-                        'assets/mastercard.png',
-                        height: 48,
-                        width: 48,
+    return Container(
+      child: MaterialApp(
+        title: 'Flutter Credit Card View Demo',
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        home: Scaffold(
+          resizeToAvoidBottomInset: false,
+          body: Container(
+            decoration: BoxDecoration(
+              image: !useBackgroundImage
+                  ? const DecorationImage(
+                      image: ExactAssetImage('assets/bg.png'),
+                      fit: BoxFit.fill,
+                    )
+                  : null,
+              color: Colors.black,
+            ),
+            child: SafeArea(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  CreditCardWidget(
+                    glassmorphismConfig:
+                        useGlassMorphism ? Glassmorphism.defaultConfig() : null,
+                    cardNumber: cardNumber,
+                    expiryDate: expiryDate,
+                    cardHolderName: cardHolderName,
+                    cvvCode: cvvCode,
+                    bankName: '',
+                    showBackView: isCvvFocused,
+                    obscureCardNumber: true,
+                    obscureCardCvv: true,
+                    isHolderNameVisible: true,
+                    cardBgColor: Colors.red,
+                    backgroundImage:
+                        useBackgroundImage ? 'assets/card_bg.png' : null,
+                    isSwipeGestureEnabled: true,
+                    onCreditCardWidgetChange:
+                        (CreditCardBrand creditCardBrand) {},
+                    customCardTypeIcons: <CustomCardTypeIcon>[
+                      CustomCardTypeIcon(
+                        cardType: CardType.mastercard,
+                        cardImage: Image.asset(
+                          'assets/mastercard.png',
+                          height: 48,
+                          width: 48,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
+                    ],
+                  ),
+                  Expanded(
                     child: Column(
-                      children: <Widget>[
+                      children: [
                         CreditCardForm(
                           formKey: formKey,
                           obscureCvv: true,
@@ -142,47 +142,47 @@ class CreditCardState extends State<CreditCard> {
                           height: 20,
                         ),
                         /*Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text(
-                              'Glassmorphism',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Text(
+                                'Glassmorphism',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
                               ),
-                            ),
-                            Switch(
-                              value: useGlassMorphism,
-                              inactiveTrackColor: Colors.grey,
-                              activeColor: Colors.white,
-                              activeTrackColor: Colors.green,
-                              onChanged: (bool value) => setState(() {
-                                useGlassMorphism = value;
-                              }),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text(
-                              'Card Image',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
+                              Switch(
+                                value: useGlassMorphism,
+                                inactiveTrackColor: Colors.grey,
+                                activeColor: Colors.white,
+                                activeTrackColor: Colors.green,
+                                onChanged: (bool value) => setState(() {
+                                  useGlassMorphism = value;
+                                }),
                               ),
-                            ),
-                            Switch(
-                              value: useBackgroundImage,
-                              inactiveTrackColor: Colors.grey,
-                              activeColor: Colors.white,
-                              activeTrackColor: Colors.green,
-                              onChanged: (bool value) => setState(() {
-                                useBackgroundImage = value;
-                              }),
-                            ),
-                          ],
-                        ),*/
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Text(
+                                'Card Image',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Switch(
+                                value: useBackgroundImage,
+                                inactiveTrackColor: Colors.grey,
+                                activeColor: Colors.white,
+                                activeTrackColor: Colors.green,
+                                onChanged: (bool value) => setState(() {
+                                  useBackgroundImage = value;
+                                }),
+                              ),
+                            ],
+                          ),*/
                         const SizedBox(
                           height: 20,
                         ),
@@ -216,8 +216,8 @@ class CreditCardState extends State<CreditCard> {
                       ],
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
