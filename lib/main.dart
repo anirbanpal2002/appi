@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:appi/Ammount.dart';
 import 'package:appi/CraditCard.dart';
 import 'package:appi/GoogleMap.dart';
 import 'package:appi/gps.dart';
@@ -20,7 +21,7 @@ Future<void> main() async {
   AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
   runApp(
     MaterialApp(
-      home: SplashScreen(),
+      home: MyLogin(),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
