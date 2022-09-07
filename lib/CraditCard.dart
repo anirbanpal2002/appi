@@ -39,7 +39,7 @@ class CreditCardState extends State<CreditCard> {
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Container(
-          //height: MediaQuery.of(context).size.height + 200,
+          height: MediaQuery.of(context).size.height + 200,
           decoration: BoxDecoration(
             image: !useBackgroundImage
                 ? const DecorationImage(
