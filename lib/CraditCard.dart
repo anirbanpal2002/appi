@@ -35,14 +35,11 @@ class CreditCardState extends State<CreditCard> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: Scaffold(
-        resizeToAvoidBottomInset: false,
-        body: Container(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Container(
+          height: MediaQuery.of(context).size.height + 200,
           decoration: BoxDecoration(
             image: !useBackgroundImage
                 ? const DecorationImage(
@@ -141,47 +138,47 @@ class CreditCardState extends State<CreditCard> {
                           height: 20,
                         ),
                         /*Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text(
-                              'Glassmorphism',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Text(
+                                'Glassmorphism',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
                               ),
-                            ),
-                            Switch(
-                              value: useGlassMorphism,
-                              inactiveTrackColor: Colors.grey,
-                              activeColor: Colors.white,
-                              activeTrackColor: Colors.green,
-                              onChanged: (bool value) => setState(() {
-                                useGlassMorphism = value;
-                              }),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            const Text(
-                              'Card Image',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 18,
+                              Switch(
+                                value: useGlassMorphism,
+                                inactiveTrackColor: Colors.grey,
+                                activeColor: Colors.white,
+                                activeTrackColor: Colors.green,
+                                onChanged: (bool value) => setState(() {
+                                  useGlassMorphism = value;
+                                }),
                               ),
-                            ),
-                            Switch(
-                              value: useBackgroundImage,
-                              inactiveTrackColor: Colors.grey,
-                              activeColor: Colors.white,
-                              activeTrackColor: Colors.green,
-                              onChanged: (bool value) => setState(() {
-                                useBackgroundImage = value;
-                              }),
-                            ),
-                          ],
-                        ),*/
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              const Text(
+                                'Card Image',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 18,
+                                ),
+                              ),
+                              Switch(
+                                value: useBackgroundImage,
+                                inactiveTrackColor: Colors.grey,
+                                activeColor: Colors.white,
+                                activeTrackColor: Colors.green,
+                                onChanged: (bool value) => setState(() {
+                                  useBackgroundImage = value;
+                                }),
+                              ),
+                            ],
+                          ),*/
                         const SizedBox(
                           height: 20,
                         ),
