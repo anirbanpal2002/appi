@@ -39,7 +39,7 @@ class CreditCardState extends State<CreditCard> {
       resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         child: Container(
-          height: MediaQuery.of(context).size.height + 200,
+          //height: MediaQuery.of(context).size.height + 200,
           decoration: BoxDecoration(
             image: !useBackgroundImage
                 ? const DecorationImage(
@@ -56,8 +56,7 @@ class CreditCardState extends State<CreditCard> {
                   height: 30,
                 ),
                 CreditCardWidget(
-                  glassmorphismConfig:
-                      useGlassMorphism ? Glassmorphism.defaultConfig() : null,
+                  glassmorphismConfig: useGlassMorphism ? Glassmorphism.defaultConfig() : null,
                   cardNumber: cardNumber,
                   expiryDate: expiryDate,
                   cardHolderName: cardHolderName,
@@ -68,11 +67,9 @@ class CreditCardState extends State<CreditCard> {
                   obscureCardCvv: true,
                   isHolderNameVisible: true,
                   cardBgColor: Colors.red,
-                  backgroundImage:
-                      useBackgroundImage ? 'assets/card_bg.png' : null,
+                  backgroundImage: useBackgroundImage ? 'assets/card_bg.png' : null,
                   isSwipeGestureEnabled: true,
-                  onCreditCardWidgetChange:
-                      (CreditCardBrand creditCardBrand) {},
+                  onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
                   customCardTypeIcons: <CustomCardTypeIcon>[
                     CustomCardTypeIcon(
                       cardType: CardType.mastercard,
@@ -85,59 +82,58 @@ class CreditCardState extends State<CreditCard> {
                   ],
                 ),
                 Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      children: <Widget>[
-                        CreditCardForm(
-                          formKey: formKey,
-                          obscureCvv: true,
-                          obscureNumber: true,
-                          cardNumber: cardNumber,
-                          cvvCode: cvvCode,
-                          isHolderNameVisible: true,
-                          isCardNumberVisible: true,
-                          isExpiryDateVisible: true,
-                          cardHolderName: cardHolderName,
-                          expiryDate: expiryDate,
-                          themeColor: Colors.blue,
-                          textColor: Colors.white,
-                          cardNumberDecoration: InputDecoration(
-                            labelText: 'Number',
-                            hintText: 'XXXX XXXX XXXX XXXX',
-                            hintStyle: const TextStyle(color: Colors.white),
-                            labelStyle: const TextStyle(color: Colors.white),
-                            focusedBorder: border,
-                            enabledBorder: border,
-                          ),
-                          expiryDateDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.white),
-                            labelStyle: const TextStyle(color: Colors.white),
-                            focusedBorder: border,
-                            enabledBorder: border,
-                            labelText: 'Expired Date',
-                            hintText: 'XX/XX',
-                          ),
-                          cvvCodeDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.white),
-                            labelStyle: const TextStyle(color: Colors.white),
-                            focusedBorder: border,
-                            enabledBorder: border,
-                            labelText: 'CVV',
-                            hintText: 'XXX',
-                          ),
-                          cardHolderDecoration: InputDecoration(
-                            hintStyle: const TextStyle(color: Colors.white),
-                            labelStyle: const TextStyle(color: Colors.white),
-                            focusedBorder: border,
-                            enabledBorder: border,
-                            labelText: 'Card Holder',
-                          ),
-                          onCreditCardModelChange: onCreditCardModelChange,
+                  child: Column(
+                    children: <Widget>[
+                      CreditCardForm(
+                        formKey: formKey,
+                        obscureCvv: true,
+                        obscureNumber: true,
+                        cardNumber: cardNumber,
+                        cvvCode: cvvCode,
+                        isHolderNameVisible: true,
+                        isCardNumberVisible: true,
+                        isExpiryDateVisible: true,
+                        cardHolderName: cardHolderName,
+                        expiryDate: expiryDate,
+                        themeColor: Colors.blue,
+                        textColor: Colors.white,
+                        cardNumberDecoration: InputDecoration(
+                          labelText: 'Number',
+                          hintText: 'XXXX XXXX XXXX XXXX',
+                          hintStyle: const TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(color: Colors.white),
+                          focusedBorder: border,
+                          enabledBorder: border,
                         ),
-                        const SizedBox(
-                          height: 20,
+                        expiryDateDecoration: InputDecoration(
+                          hintStyle: const TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(color: Colors.white),
+                          focusedBorder: border,
+                          enabledBorder: border,
+                          labelText: 'Expired Date',
+                          hintText: 'XX/XX',
                         ),
-                        /*Row(
+                        cvvCodeDecoration: InputDecoration(
+                          hintStyle: const TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(color: Colors.white),
+                          focusedBorder: border,
+                          enabledBorder: border,
+                          labelText: 'CVV',
+                          hintText: 'XXX',
+                        ),
+                        cardHolderDecoration: InputDecoration(
+                          hintStyle: const TextStyle(color: Colors.white),
+                          labelStyle: const TextStyle(color: Colors.white),
+                          focusedBorder: border,
+                          enabledBorder: border,
+                          labelText: 'Card Holder',
+                        ),
+                        onCreditCardModelChange: onCreditCardModelChange,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      /*Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               const Text(
@@ -179,38 +175,37 @@ class CreditCardState extends State<CreditCard> {
                               ),
                             ],
                           ),*/
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8.0),
-                            ),
-                            primary: const Color(0xff1b447b),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(8.0),
                           ),
-                          child: Container(
-                            margin: const EdgeInsets.all(12),
-                            child: const Text(
-                              'Validate',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'halter',
-                                fontSize: 14,
-                                package: 'flutter_credit_card',
-                              ),
+                          primary: const Color(0xff1b447b),
+                        ),
+                        child: Container(
+                          margin: const EdgeInsets.all(12),
+                          child: const Text(
+                            'Validate',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontFamily: 'halter',
+                              fontSize: 14,
+                              package: 'flutter_credit_card',
                             ),
                           ),
-                          onPressed: () {
-                            if (formKey.currentState!.validate()) {
-                              print('valid!');
-                            } else {
-                              print('invalid!');
-                            }
-                          },
                         ),
-                      ],
-                    ),
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            print('valid!');
+                          } else {
+                            print('invalid!');
+                          }
+                        },
+                      ),
+                    ],
                   ),
                 ),
               ],
