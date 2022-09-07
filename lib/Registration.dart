@@ -26,14 +26,12 @@ class _MyRegistrationState extends State<MyRegistration> {
       emailcont.clear();
       phcont.clear();
       vlcont.clear();
-      UserCredential userCredential = await FirebaseAuth.instance
-          .createUserWithEmailAndPassword(email: Email, password: Password)
-          .whenComplete(() {
+      UserCredential userCredential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(email: Email, password: Password).whenComplete(() {
         //print('User Added');
         //Navigator.push(
         //    context, MaterialPageRoute(builder: (context) => const MyLogin()));
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const PaymentScreen()));
+        Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentScreen()));
       });
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -46,14 +44,14 @@ class _MyRegistrationState extends State<MyRegistration> {
     }
   }
 
-  void addRegistrationDetail(
-      String password, String email, String ph, String vl) {
+  void addRegistrationDetail(String password, String email, String ph, String vl) {
     database.collection("Users").add({
       'PASSWORD': password,
       'EMAIL': email,
       'PHONE_NUMBER': ph,
       'VEHICLE_NUMBER': vl,
       'TYPE_OF_SERVICE': radioValue,
+      'VERIFICATION': false,
     }).then((value) {
       signInWithEmail(email, password);
       // print('User Added');
@@ -81,9 +79,7 @@ class _MyRegistrationState extends State<MyRegistration> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover)),
+      decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
@@ -110,8 +106,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Radio(
-                      fillColor: MaterialStateProperty.resolveWith(
-                          (states) => Colors.white),
+                      fillColor: MaterialStateProperty.resolveWith((states) => Colors.white),
                       toggleable: true,
                       activeColor: Colors.white,
                       value: 'AMBULANCE',
@@ -124,15 +119,11 @@ class _MyRegistrationState extends State<MyRegistration> {
                     ),
                     const Text(
                       "Ambulance",
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold),
+                      style: TextStyle(color: Colors.white, fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                     const SizedBox(width: 90.0),
                     Radio(
-                      fillColor: MaterialStateProperty.resolveWith(
-                          (states) => Colors.white),
+                      fillColor: MaterialStateProperty.resolveWith((states) => Colors.white),
                       toggleable: true,
                       activeColor: Colors.white,
                       value: "Fire",
@@ -167,16 +158,12 @@ class _MyRegistrationState extends State<MyRegistration> {
                   },
                   keyboardType: TextInputType.emailAddress,
                   decoration: InputDecoration(
-                      errorStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
+                      errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
                       fillColor: Colors.white,
                       filled: true,
                       hintText: 'EMAIL',
                       prefixIcon: const Icon(Icons.email),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30))),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                 ),
                 const SizedBox(
                   height: 10,
@@ -191,16 +178,12 @@ class _MyRegistrationState extends State<MyRegistration> {
                   },
                   keyboardType: TextInputType.phone,
                   decoration: InputDecoration(
-                      errorStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
+                      errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
                       fillColor: Colors.white,
                       filled: true,
                       hintText: 'Phone Number',
                       prefixIcon: const Icon(Icons.phone_android),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30))),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                 ),
                 const SizedBox(
                   height: 10,
@@ -215,10 +198,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                   },
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(
-                      errorStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
+                      errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
                       fillColor: Colors.white,
                       filled: true,
                       hintText: "V NUMBER",
@@ -226,8 +206,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                         Icons.car_rental,
                         size: 30,
                       ),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30))),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                 ),
                 const SizedBox(
                   height: 10,
@@ -243,16 +222,12 @@ class _MyRegistrationState extends State<MyRegistration> {
                     return null;
                   },
                   decoration: InputDecoration(
-                      errorStyle: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15),
+                      errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
                       fillColor: Colors.white,
                       filled: true,
                       hintText: ' PASSWORD ',
                       prefixIcon: const Icon(Icons.verified_user_rounded),
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(30))),
+                      border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                 ),
                 const SizedBox(
                   height: 10,
@@ -329,8 +304,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                         onPrimary: Colors.grey,
                         shadowColor: Colors.greenAccent,
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(32.0)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(32.0)),
                         minimumSize: const Size(30, 50),
                       ),
                       onPressed: () {
@@ -346,10 +320,7 @@ class _MyRegistrationState extends State<MyRegistration> {
                       },
                       child: const Text(
                         'Payment',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.bold),
+                        style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
                       ),
                       //icon: Icon(Icons.arrow_forward),
                     ),
