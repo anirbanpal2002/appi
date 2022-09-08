@@ -19,6 +19,7 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   bool _isVisible = false;
   final _formKey = GlobalKey<FormState>();
+  TextEditingController vehiclecont = TextEditingController();
   TextEditingController passcont = TextEditingController();
   static TextEditingController emailcont = TextEditingController();
   bool hidePassword = true;
@@ -120,6 +121,7 @@ class _MyLoginState extends State<MyLogin> {
     // super.dispose();
     passcont.dispose();
     emailcont.dispose();
+    vehiclecont.dispose();
     super.dispose();
   }
 
@@ -166,7 +168,7 @@ class _MyLoginState extends State<MyLogin> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        ElevatedButton(
+                        /* ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.blueAccent.shade700,
                               side: BorderSide(width: 3, color: Colors.black),
@@ -209,7 +211,7 @@ class _MyLoginState extends State<MyLogin> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),
+                        ),*/
                       ],
                     ),
                   ),
@@ -265,6 +267,31 @@ class _MyLoginState extends State<MyLogin> {
                                   borderRadius: BorderRadius.circular(30))),
                         ),
                         const SizedBox(
+                          height: 30,
+                        ),
+                        TextFormField(
+                          obscureText: !_isVisible,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return 'PLEASE ENTER PASSWORD';
+                            }
+                            return null;
+                          },
+                          //obscureText: hidePassword,
+                          controller: vehiclecont,
+                          decoration: InputDecoration(
+                              errorStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
+                              fillColor: Colors.white,
+                              filled: true,
+                              hintText: 'VEHICLE ID',
+                              prefixIcon: const Icon(Icons.key),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30))),
+                        ),
+                        SizedBox(
                           height: 30,
                         ),
                         ElevatedButton(

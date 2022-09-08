@@ -21,7 +21,7 @@ Future<void> main() async {
   AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
   runApp(
     MaterialApp(
-      home: CreditCard(),
+      home: MyLogin(),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
@@ -45,7 +45,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
         ),
         child: Scaffold(
             backgroundColor: Colors.transparent,
@@ -55,7 +56,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: const Text(
                     'WELCOME TO APPI',
                     style: TextStyle(
-                        color: Colors.white, fontSize: 25, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold),
                   )),
             ])));
   }
@@ -63,7 +67,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 10),
-        () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyLogin())));
+    Timer(
+        Duration(seconds: 10),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => MyLogin())));
   }
 }
