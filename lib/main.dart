@@ -12,6 +12,7 @@ import 'package:appi/Instruction.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'firebase_options.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,6 +20,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   AndroidGoogleMapsFlutter.useAndroidViewSurface = true;
+
   runApp(
     MaterialApp(
       home: CreditCard(),
@@ -40,7 +42,18 @@ class SplashScreen extends StatefulWidget {
   State<SplashScreen> createState() => _SplashScreenState();
 }
 
+Future<FirebaseRemoteConfig> activateRemoteConfig() async {
+  final FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
+  await remoteConfig.setConfigSettings(RemoteConfigSettings(
+    fetchTimeout: const Duration(seconds: 10),
+    minimumFetchInterval: const Duration(hours: 1),
+  ));
+  await remoteConfig.fetchAndActivate();
+  return remoteConfig;
+}
+
 class _SplashScreenState extends State<SplashScreen> {
+  FirebaseRemoteConfig remoteConfig = FirebaseRemoteConfig.instance;
   @override
   Widget build(BuildContext context) {
     return Container(
