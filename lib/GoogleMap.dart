@@ -17,15 +17,16 @@ class _GoogleState extends State<Google> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        child: Scaffold(
-      body: GoogleMap(
+      child: Scaffold(
+        body: GoogleMap(
           onMapCreated: _onMapCreated,
           compassEnabled: true,
           myLocationButtonEnabled: true,
           myLocationEnabled: true,
           trafficEnabled: false,
-          initialCameraPosition: const CameraPosition(
-              target: LatLng(22.567579, 88.469023), zoom: 12.0)),
-    ));
+          initialCameraPosition: const CameraPosition(target: LatLng(22.567579, 88.469023), zoom: 12.0),
+        ),
+      ),
+    );
   }
 }
