@@ -19,7 +19,7 @@ class MyLogin extends StatefulWidget {
 class _MyLoginState extends State<MyLogin> {
   static bool _isVisible = false;
   final _formKey = GlobalKey<FormState>();
-  TextEditingController phonecont = TextEditingController();
+  static TextEditingController phonecont = TextEditingController();
   TextEditingController vehiclecont = TextEditingController();
   static TextEditingController otpcont = TextEditingController();
   static TextEditingController passcont = TextEditingController();
@@ -155,6 +155,7 @@ class _MyLoginState extends State<MyLogin> {
         }
         return null;
       },
+      controller: phonecont,
       decoration: InputDecoration(
           errorStyle: const TextStyle(
               color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
@@ -174,6 +175,7 @@ class _MyLoginState extends State<MyLogin> {
             return "PLEASE ENTER OTP";
           }
         },
+        controller: otpcont,
         decoration: InputDecoration(
             errorStyle: const TextStyle(
                 color: Colors.white, fontWeight: FontWeight.bold),
