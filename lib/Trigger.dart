@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:appi/gps.dart';
+import 'GoogleMap.dart';
 //import 'package:location/location.dart';
 
 class MyTrigger extends StatefulWidget {
@@ -85,7 +86,8 @@ class _MyTriggerState extends State<MyTrigger> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Gps()));
+                                      builder: (context) => const Google(
+                                          lat: 22.141514, lon: 88.361542)));
                             },
                             //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
                             //),),

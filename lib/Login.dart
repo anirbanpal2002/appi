@@ -270,10 +270,9 @@ class _MyLoginState extends State<MyLogin> {
                           height: 30,
                         ),
                         TextFormField(
-                          obscureText: !_isVisible,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return 'PLEASE ENTER PASSWORD';
+                              return 'PLEASE ENTER VID';
                             }
                             return null;
                           },

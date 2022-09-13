@@ -6,7 +6,8 @@ import 'package:google_polyline_algorithm/google_polyline_algorithm.dart';
 import 'package:http/http.dart' as http;
 
 class Google extends StatefulWidget {
-  const Google({Key? key, required this.lat, required this.lon}) : super(key: key);
+  const Google({Key? key, required this.lat, required this.lon})
+      : super(key: key);
 
   final double lat;
   final double lon;
@@ -36,7 +37,7 @@ class _GoogleState extends State<Google> {
         scheme: "https",
         host: "maps.googleapis.com",
         path: "/maps/api/geocode/json",
-        queryParameters: {"latlng": "${widget.lat}, ${widget.lon}", "key": API});
+        queryParameters: {"latlng": "22.622508, 88.443714", "key": API});
     urlDestination = Uri(
         scheme: "https",
         host: "maps.googleapis.com",
@@ -69,22 +70,28 @@ class _GoogleState extends State<Google> {
   Future<void> getDirection() async {
     await getData();
     if (origin && destination) {
-      final Uri urlDirection =
-          Uri(scheme: "https", host: "maps.googleapis.com", path: "/maps/api/directions/json", queryParameters: {
-        "origin": "place_id:" + originPlaceID,
-        "destination": "place_id:" + destinationPlaceID,
-        "mode": "driving",
-        "avoid": "tolls|highways|ferries",
-        "key": API
-      });
+      final Uri urlDirection = Uri(
+          scheme: "https",
+          host: "maps.googleapis.com",
+          path: "/maps/api/directions/json",
+          queryParameters: {
+            "origin": "place_id:" + originPlaceID,
+            "destination": "place_id:" + destinationPlaceID,
+            "mode": "driving",
+            "avoid": "tolls|highways|ferries",
+            "key": API
+          });
       print(urlDirection);
       http.Response response = await http.get(urlDirection);
       if (response.statusCode == 200) {
         String data = response.body;
         for (int i = 0; i < 1; i++) {
-          if (jsonDecode(data)["geocoded_waypoints"][i]["geocoder_status"] == "OK") {
-            double lat = jsonDecode(data)["routes"][0]["legs"][i]["start_location"]["lat"];
-            double lng = jsonDecode(data)["routes"][0]["legs"][i]["start_location"]["lng"];
+          if (jsonDecode(data)["geocoded_waypoints"][i]["geocoder_status"] ==
+              "OK") {
+            double lat = jsonDecode(data)["routes"][0]["legs"][i]
+                ["start_location"]["lat"];
+            double lng = jsonDecode(data)["routes"][0]["legs"][i]
+                ["start_location"]["lng"];
 
             if (i == 0) {
               polylineCoordinates1.add(LatLng(lat, lng));
@@ -94,7 +101,8 @@ class _GoogleState extends State<Google> {
               polylineCoordinates3.add(LatLng(lat, lng));
             }
             int polylineTotal = 0;
-            for (var steps in jsonDecode(data)["routes"][0]["legs"][i]["steps"]) {
+            for (var steps in jsonDecode(data)["routes"][0]["legs"][i]
+                ["steps"]) {
               String step = jsonEncode(steps);
               /*double lat = jsonDecode(step)["end_location"]["lat"];
               double lng = jsonDecode(step)["end_location"]["lng"];
@@ -157,7 +165,8 @@ class _GoogleState extends State<Google> {
           myLocationButtonEnabled: true,
           myLocationEnabled: true,
           trafficEnabled: false,
-          initialCameraPosition: const CameraPosition(target: LatLng(22.567579, 88.469023), zoom: 12.0),
+          initialCameraPosition: const CameraPosition(
+              target: LatLng(22.567579, 88.469023), zoom: 12.0),
         ),
       ),
     );
