@@ -17,10 +17,12 @@ class MyLogin extends StatefulWidget {
 }
 
 class _MyLoginState extends State<MyLogin> {
-  bool _isVisible = false;
+  static bool _isVisible = false;
   final _formKey = GlobalKey<FormState>();
+  TextEditingController phonecont = TextEditingController();
   TextEditingController vehiclecont = TextEditingController();
-  TextEditingController passcont = TextEditingController();
+  static TextEditingController otpcont = TextEditingController();
+  static TextEditingController passcont = TextEditingController();
   static TextEditingController emailcont = TextEditingController();
   bool hidePassword = true;
   Selected selection = Selected.email;
@@ -106,6 +108,43 @@ class _MyLoginState extends State<MyLogin> {
           prefixIcon: const Icon(Icons.verified_user_rounded),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     ),
+    SizedBox(
+      height: 30,
+    ),
+    TextFormField(
+      obscureText: !_isVisible,
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'PLEASE ENTER PASSWORD';
+        }
+        return null;
+      },
+      //obscureText: hidePassword,
+      controller: passcont,
+      decoration: InputDecoration(
+          suffixIcon: IconButton(
+            onPressed: () {
+              _isVisible = !_isVisible;
+              //setState(() {});
+            },
+            icon: _isVisible
+                ? Icon(
+                    Icons.visibility,
+                    color: Colors.black,
+                  )
+                : Icon(
+                    Icons.visibility_off,
+                    color: Colors.grey,
+                  ),
+          ),
+          errorStyle: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+          fillColor: Colors.white,
+          filled: true,
+          hintText: 'PASSWORD',
+          prefixIcon: const Icon(Icons.security),
+          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+    ),
   ];
   List<Widget> phoneSpace = [
     TextFormField(
@@ -125,8 +164,26 @@ class _MyLoginState extends State<MyLogin> {
           prefixIcon: const Icon(Icons.phone),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     ),
+    SizedBox(
+      height: 30,
+    ),
+    TextFormField(
+        keyboardType: TextInputType.phone,
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return "PLEASE ENTER OTP";
+          }
+        },
+        decoration: InputDecoration(
+            errorStyle: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
+            hintText: 'OTP',
+            filled: true,
+            fillColor: Colors.white,
+            prefixIcon: const Icon(Icons.privacy_tip_outlined),
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30))))
   ];
-
   @override
   void dispose() {
     // super.dispose();
@@ -179,7 +236,7 @@ class _MyLoginState extends State<MyLogin> {
                       mainAxisSize: MainAxisSize.max,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        /* ElevatedButton(
+                        ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.blueAccent.shade700,
                               side: BorderSide(width: 3, color: Colors.black),
@@ -222,7 +279,7 @@ class _MyLoginState extends State<MyLogin> {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                        ),*/
+                        ),
                       ],
                     ),
                   ),
@@ -238,44 +295,6 @@ class _MyLoginState extends State<MyLogin> {
                         ),
                         const SizedBox(
                           height: 30,
-                        ),
-                        TextFormField(
-                          obscureText: !_isVisible,
-                          validator: (value) {
-                            if (value == null || value.isEmpty) {
-                              return 'PLEASE ENTER PASSWORD';
-                            }
-                            return null;
-                          },
-                          //obscureText: hidePassword,
-                          controller: passcont,
-                          decoration: InputDecoration(
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    _isVisible = !_isVisible;
-                                  });
-                                },
-                                icon: _isVisible
-                                    ? Icon(
-                                        Icons.visibility,
-                                        color: Colors.black,
-                                      )
-                                    : Icon(
-                                        Icons.visibility_off,
-                                        color: Colors.grey,
-                                      ),
-                              ),
-                              errorStyle: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
-                              fillColor: Colors.white,
-                              filled: true,
-                              hintText: 'PASSWORD',
-                              prefixIcon: const Icon(Icons.security),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30))),
                         ),
                         const SizedBox(
                           height: 30,
@@ -403,7 +422,7 @@ class _MyLoginState extends State<MyLogin> {
                     ],
                   ),
                   const SizedBox(
-                    height: 85,
+                    height: 70,
                   ),
                   Row(
                     children: const [
