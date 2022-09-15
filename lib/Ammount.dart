@@ -27,27 +27,12 @@ class _AmmountState extends State<Ammount> {
                 mainAxisAlignment: MainAxisAlignment.spaceAround,
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  TextFormField(
-                    obscureText: !_isVisible,
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'PLEASE ENTER PASSWORD';
-                      }
-                      return null;
-                    },
-                    //obscureText: hidePassword,
-                    decoration: InputDecoration(
-                        errorStyle: const TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16),
-                        fillColor: Colors.white,
-                        filled: true,
-                        hintText: 'Enter the Amount',
-                        prefixIcon: const Icon(Icons.currency_rupee),
-                        border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(30))),
-                  ),
+                  const Text("Rs.100",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 50,
+                        fontWeight: FontWeight.bold,
+                      )),
                   SizedBox(
                     height: 30,
                   ),
