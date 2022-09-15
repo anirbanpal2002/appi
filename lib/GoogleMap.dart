@@ -160,6 +160,7 @@ class _GoogleState extends State<Google> {
     return SafeArea(
       child: Scaffold(
         body: GoogleMap(
+          polylines: _polyline,
           onMapCreated: _onMapCreated,
           compassEnabled: true,
           myLocationButtonEnabled: true,
