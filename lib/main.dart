@@ -23,7 +23,7 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      home: const Google(lat: 22.141514, lon: 88.361542),
+      home: MyLogin(),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
