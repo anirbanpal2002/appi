@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_credit_card/credit_card_brand.dart';
 import 'package:flutter_credit_card/flutter_credit_card.dart';
@@ -56,7 +58,8 @@ class CreditCardState extends State<CreditCard> {
                   height: 30,
                 ),
                 CreditCardWidget(
-                  glassmorphismConfig: useGlassMorphism ? Glassmorphism.defaultConfig() : null,
+                  glassmorphismConfig:
+                      useGlassMorphism ? Glassmorphism.defaultConfig() : null,
                   cardNumber: cardNumber,
                   expiryDate: expiryDate,
                   cardHolderName: cardHolderName,
@@ -67,9 +70,11 @@ class CreditCardState extends State<CreditCard> {
                   obscureCardCvv: true,
                   isHolderNameVisible: true,
                   cardBgColor: Colors.red,
-                  backgroundImage: useBackgroundImage ? 'assets/card_bg.png' : null,
+                  backgroundImage:
+                      useBackgroundImage ? 'assets/card_bg.png' : null,
                   isSwipeGestureEnabled: true,
-                  onCreditCardWidgetChange: (CreditCardBrand creditCardBrand) {},
+                  onCreditCardWidgetChange:
+                      (CreditCardBrand creditCardBrand) {},
                   customCardTypeIcons: <CustomCardTypeIcon>[
                     CustomCardTypeIcon(
                       cardType: CardType.mastercard,
@@ -200,6 +205,10 @@ class CreditCardState extends State<CreditCard> {
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             print('valid!');
+                            print(cardNumber);
+                            print(cardHolderName);
+                            print(cvvCode);
+                            print(expiryDate);
                           } else {
                             print('invalid!');
                           }
