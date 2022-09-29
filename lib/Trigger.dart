@@ -86,8 +86,7 @@ class _MyTriggerState extends State<MyTrigger> {
                               Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => const Google(
-                                          lat: 22.141514, lon: 88.361542)));
+                                      builder: (context) => const Gps()));
                             },
                             //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
                             //),),

@@ -1,3 +1,4 @@
+import 'package:appi/GoogleMap.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -11,8 +12,10 @@ class Gps extends StatefulWidget {
 class _GpsState extends State<Gps> {
   // LocationData _locationData=LocationData();
   Location location = Location();
-  String lat = "k";
-  String long = "s";
+  String latText = "k";
+  String longText = "s";
+  double lat = 0;
+  double lon = 0;
 
   @override
   void initState() {
@@ -44,8 +47,10 @@ class _GpsState extends State<Gps> {
 
     setState(() async {
       _locationData = await location.getLocation();
-      lat = _locationData.latitude.toString();
-      long = _locationData.longitude.toString();
+      lat = _locationData.latitude!.toDouble();
+      latText = lat.toString();
+      lon = _locationData.longitude!.toDouble();
+      longText = lon.toString();
     });
   }
 
@@ -63,7 +68,7 @@ class _GpsState extends State<Gps> {
                   fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
             ),
             Text(
-              lat,
+              latText,
             ),
             SizedBox(
               height: 20,
@@ -74,13 +79,31 @@ class _GpsState extends State<Gps> {
                   fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
             ),
             Text(
-              long,
+              longText,
             ),
             TextButton(
               onPressed: () {
                 setState(() {
                   mylocation();
                 });
+              },
+              child: const Text(
+                "GET",
+                style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.red),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => Google(lat: lat, lon: lon)));
               },
               child: const Text(
                 "GET",

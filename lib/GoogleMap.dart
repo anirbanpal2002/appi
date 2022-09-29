@@ -46,17 +46,17 @@ class _GoogleState extends State<Google> {
 
     print(urlOrigin);
     print(urlDestination);
-    http.Response response1 = await http.get(urlOrigin);
+    // http.Response response1 = await http.get(urlOrigin);
     http.Response response2 = await http.get(urlDestination);
 
-    if (response1.statusCode == 200) {
+    /*if (response1.statusCode == 200) {
       origin = true;
       String data = response1.body;
       originPlaceID = jsonDecode(data)['results'][0]['place_id'];
       print(originPlaceID);
     } else {
       print(response1.statusCode);
-    }
+    }*/
     if (response2.statusCode == 200) {
       destination = true;
       String data = response2.body;
@@ -69,14 +69,19 @@ class _GoogleState extends State<Google> {
 
   Future<void> getDirection() async {
     await getData();
-    if (origin && destination) {
+    if (true) {
+      print(widget.lat);
+      print(widget.lon);
       final Uri urlDirection = Uri(
           scheme: "https",
           host: "maps.googleapis.com",
           path: "/maps/api/directions/json",
           queryParameters: {
-            "origin": "place_id:" + originPlaceID,
+            //"origin": "place_id:" + originPlaceID,
+            "origin": "${widget.lat},${widget.lon}",
             "destination": "place_id:" + destinationPlaceID,
+            //"origin":widget.lon,
+            //"destination":widget.,
             "mode": "driving",
             "avoid": "tolls|highways|ferries",
             "key": API

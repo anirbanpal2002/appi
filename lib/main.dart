@@ -24,7 +24,7 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      home: MyLogin(),
+      home: SplashScreen(), //Google(lat: 22.622508, lon: 88.443714),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
@@ -84,6 +84,6 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 10),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MyLogin())));
+            context, MaterialPageRoute(builder: (context) => MyTrigger())));
   }
 }
