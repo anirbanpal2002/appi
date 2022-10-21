@@ -5,6 +5,7 @@ import 'package:appi/CraditCard.dart';
 import 'package:appi/GoogleMap.dart';
 import 'package:appi/PaymentScreen.dart';
 import 'package:appi/gps.dart';
+import 'package:appi/options.dart';
 import 'package:flutter/material.dart';
 import 'package:appi/Login.dart';
 import 'package:appi/Registration.dart';
@@ -24,7 +25,7 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      home: SplashScreen(), //Google(lat: 22.622508, lon: 88.443714),
+      home: Options(), //Google(lat: 22.622508, lon: 88.443714),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
@@ -84,6 +85,6 @@ class _SplashScreenState extends State<SplashScreen> {
     Timer(
         Duration(seconds: 10),
         () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MyTrigger())));
+            context, MaterialPageRoute(builder: (context) => MyLogin())));
   }
 }
