@@ -67,7 +67,7 @@ class _OptionsState extends State<Options> {
                       });
                     },
                     child: const Text(
-                      '  USER  ',
+                      '  USE  ',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
