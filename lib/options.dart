@@ -14,7 +14,10 @@ class _OptionsState extends State<Options> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: SafeArea(
+        body: Container(
+          decoration: const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/img2.jpg"), fit: BoxFit.cover)),
           child: Form(
             child: Center(
               child: Column(
