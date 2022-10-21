@@ -34,7 +34,7 @@ class _GpsState extends State<Gps> {
           'CURRENT_LAT': num2,
           'DESTINATION_LONG': num3,
           'DESTINATION_LAT': num4,
-          'REQUEST_APPROVE':false,
+          'REQUEST_APPROVE': false,
         }).catchError((error) {
           print('ERROR');
           //return false;
@@ -145,7 +145,7 @@ class _GpsState extends State<Gps> {
             ),
             TextButton(
               onPressed: () {
-                addRequestDetail(lon, lat, 88.477092, 22.577721)
+                addRequestDetail(lon, lat, 88.477092, 22.577721);
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
