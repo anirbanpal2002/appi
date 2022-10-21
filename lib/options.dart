@@ -14,10 +14,7 @@ class _OptionsState extends State<Options> {
     return SafeArea(
       child: Scaffold(
         backgroundColor: Colors.transparent,
-        body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/img2.jpg"), fit: BoxFit.cover)),
+        body: SafeArea(
           child: Form(
             child: Center(
               child: Column(
@@ -26,18 +23,14 @@ class _OptionsState extends State<Options> {
                 children: [
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.redAccent.shade700,
+                        backgroundColor: Colors.redAccent.shade700,
                         side: const BorderSide(width: 3, color: Colors.white),
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                         padding: const EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Adminlogin()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const Adminlogin()));
                       });
                     },
                     child: const Text(
@@ -53,11 +46,10 @@ class _OptionsState extends State<Options> {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.redAccent.shade700,
+                        backgroundColor: Colors.redAccent.shade700,
                         side: const BorderSide(width: 3, color: Colors.white),
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                         padding: const EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
@@ -70,7 +62,7 @@ class _OptionsState extends State<Options> {
                       });
                     },
                     child: const Text(
-                      '  USE  ',
+                      '  USER  ',
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 25,
