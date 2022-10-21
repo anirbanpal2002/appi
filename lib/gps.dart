@@ -1,4 +1,7 @@
 import 'package:appi/GoogleMap.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -11,11 +14,53 @@ class Gps extends StatefulWidget {
 
 class _GpsState extends State<Gps> {
   // LocationData _locationData=LocationData();
+  final FirebaseFirestore database = FirebaseFirestore.instance;
   Location location = Location();
   String latText = "k";
   String longText = "s";
   double lat = 0;
   double lon = 0;
+
+  void addRequestDetail(double num1, double num2, double num3, double num4) {
+    database
+        .collection("Users")
+        .where("EMAIL", isEqualTo: FirebaseAuth.instance.currentUser!.email)
+        .get()
+        .then((QuerySnapshot queryDocumentSnapshot) {
+      for (var element in queryDocumentSnapshot.docs) {
+        // element.id
+        database.collection("Users").doc(element.id).collection("Request").add({
+          'CURRENT_LONG': num1,
+          'CURRENT_LAT': num2,
+          'DESTINATION_LONG': num3,
+          'DESTINATION_LAT': num4,
+          'REQUEST_APPROVE':false,
+        }).catchError((error) {
+          print('ERROR');
+          //return false;
+        });
+      }
+    });
+    /*database.collection("Users").add({
+      'PASSWORD': password,
+      'EMAIL': email,
+      'PHONE_NUMBER': ph,
+      'VEHICLE_NUMBER': vl,
+      'TYPE_OF_SERVICE': radioValue,
+      'VERIFICATION': false,
+    }).then((value) {
+      signInWithEmail(email, password);
+      // print('User Added');
+      // Navigator.push(
+      //     context, MaterialPageRoute(builder: (context) => const MyLogin()));
+      //return true;
+    }).catchError((error) {
+      print('ERROR');
+      //return false;
+    });
+*/
+    //return false;
+  }
 
   @override
   void initState() {
@@ -100,6 +145,7 @@ class _GpsState extends State<Gps> {
             ),
             TextButton(
               onPressed: () {
+                addRequestDetail(lon, lat, 88.477092, 22.577721)
                 Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
