@@ -13,15 +13,13 @@ class _InstructionState extends State<Instruction> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/abd.jpg"), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage("assets/abd.jpg"), fit: BoxFit.cover),
       ),
       child: SafeArea(
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: SingleChildScrollView(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 150.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 150.0),
               child: Column(
                 children: [
                   Text(
@@ -41,17 +39,11 @@ class _InstructionState extends State<Instruction> {
                   ),
                   const Text(
                     '\t \t FOR RETURN PRESS TICK',
-                    style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold),
+                    style: TextStyle(color: Colors.black, fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                   IconButton(
                     onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyLogin()));
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => const MyLogin()));
                     },
                     //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
                     //),),

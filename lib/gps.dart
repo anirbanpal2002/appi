@@ -1,7 +1,6 @@
 import 'package:appi/GoogleMap.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 
@@ -109,8 +108,7 @@ class _GpsState extends State<Gps> {
           children: [
             const Text(
               "Latitude : ",
-              style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
             ),
             Text(
               latText,
@@ -120,8 +118,7 @@ class _GpsState extends State<Gps> {
             ),
             const Text(
               "Longitude : ",
-              style: TextStyle(
-                  fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
             ),
             Text(
               longText,
@@ -134,10 +131,7 @@ class _GpsState extends State<Gps> {
               },
               child: const Text(
                 "GET",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
               ),
             ),
             SizedBox(
@@ -146,17 +140,11 @@ class _GpsState extends State<Gps> {
             TextButton(
               onPressed: () {
                 addRequestDetail(lon, lat, 88.477092, 22.577721);
-                Navigator.pushReplacement(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => Google(lat: lat, lon: lon)));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Google(lat: lat, lon: lon)));
               },
               child: const Text(
                 "GET",
-                style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.red),
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Colors.red),
               ),
             ),
           ],

@@ -13,8 +13,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/bg.png"), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage("assets/bg.png"), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -28,17 +27,13 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.red.shade700,
-                        side: BorderSide(width: 0, color: Colors.black),
+                        side: const BorderSide(width: 0, color: Colors.black),
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: EdgeInsets.all(20)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        padding: const EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => CreditCard()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => CreditCard()));
                       });
                     },
                     child: const Text(
@@ -49,17 +44,16 @@ class _PaymentScreenState extends State<PaymentScreen> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 20,
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         primary: Colors.red.shade700,
-                        side: BorderSide(width: 0, color: Colors.black),
+                        side: const BorderSide(width: 0, color: Colors.black),
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
-                        padding: EdgeInsets.all(20)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                        padding: const EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
                         setState(() {

@@ -1,20 +1,16 @@
 import 'dart:async';
 
-import 'package:appi/Ammount.dart';
-import 'package:appi/CraditCard.dart';
-import 'package:appi/GoogleMap.dart';
-import 'package:appi/PaymentScreen.dart';
-import 'package:appi/gps.dart';
-import 'package:appi/options.dart';
-import 'package:flutter/material.dart';
+import 'package:appi/Instruction.dart';
 import 'package:appi/Login.dart';
 import 'package:appi/Registration.dart';
 import 'package:appi/Trigger.dart';
-import 'package:appi/Instruction.dart';
+import 'package:appi/options.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'firebase_options.dart';
 import 'package:firebase_remote_config/firebase_remote_config.dart';
+import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
+
+import 'firebase_options.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,8 +56,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
         ),
         child: Scaffold(
             backgroundColor: Colors.transparent,
@@ -71,10 +66,7 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: const Text(
                     'WELCOME TO APPI',
                     style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25,
-                        fontStyle: FontStyle.italic,
-                        fontWeight: FontWeight.bold),
+                        color: Colors.white, fontSize: 25, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
                   )),
             ])));
   }
@@ -82,9 +74,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(
-        Duration(seconds: 10),
-        () => Navigator.pushReplacement(
-            context, MaterialPageRoute(builder: (context) => MyLogin())));
+    Timer(Duration(seconds: 10),
+        () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyLogin())));
   }
 }

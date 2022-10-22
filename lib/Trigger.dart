@@ -1,8 +1,6 @@
+import 'package:appi/gps.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:appi/gps.dart';
-import 'GoogleMap.dart';
-//import 'package:location/location.dart';
 
 class MyTrigger extends StatefulWidget {
   const MyTrigger({Key? key}) : super(key: key);
@@ -15,9 +13,7 @@ class _MyTriggerState extends State<MyTrigger> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover)),
+      decoration: const BoxDecoration(image: DecorationImage(image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover)),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Stack(
@@ -27,17 +23,11 @@ class _MyTriggerState extends State<MyTrigger> {
                 child: const Text(
                   'TRIGGER PAGE',
                   style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontStyle: FontStyle.italic,
-                      fontWeight: FontWeight.bold),
+                      color: Colors.white, fontSize: 25, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
                 )),
             SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.only(
-                    top: MediaQuery.of(context).size.height * 0.3,
-                    right: 35,
-                    left: 35),
+                padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.3, right: 35, left: 35),
                 child: Column(
                   children: [
                     TextField(
@@ -46,8 +36,7 @@ class _MyTriggerState extends State<MyTrigger> {
                           filled: true,
                           hintText: 'DESTINATION',
                           prefixIcon: const Icon(Icons.verified_user_outlined),
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30))),
+                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                     ),
                     const SizedBox(
                       height: 30,
@@ -75,18 +64,12 @@ class _MyTriggerState extends State<MyTrigger> {
                         //),
                         const Text(
                           'TRIGGER',
-                          style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 25,
-                              fontWeight: FontWeight.bold),
+                          style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
                         ),
                         CircleAvatar(
                           child: IconButton(
                             onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Gps()));
+                              Navigator.push(context, MaterialPageRoute(builder: (context) => const Gps()));
                             },
                             //new Text('',style: TextStyle(color: Colors.white,fontSize: 25,fontWeight:FontWeight.bold
                             //),),

@@ -2,7 +2,6 @@ import 'package:appi/Trigger.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-//import 'package:flutter/painting.dart';
 
 enum Selected {
   email,
@@ -33,8 +32,8 @@ class _AdminloginState extends State<Adminlogin> {
       emailcont.clear();
       UserCredential userCredential = await FirebaseAuth.instance
               .signInWithEmailAndPassword(email: Email, password: Password)
-              .then((value) => Navigator.pushReplacement(context,
-                  MaterialPageRoute(builder: (context) => const MyTrigger())))
+              .then((value) =>
+                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyTrigger())))
           as UserCredential;
 
       // Navigator.push(
@@ -76,8 +75,7 @@ class _AdminloginState extends State<Adminlogin> {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth =
-        await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -100,8 +98,7 @@ class _AdminloginState extends State<Adminlogin> {
         return null;
       },
       decoration: InputDecoration(
-          errorStyle: const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+          errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           fillColor: Colors.white,
           filled: true,
           hintText: 'Email Id',
@@ -137,8 +134,7 @@ class _AdminloginState extends State<Adminlogin> {
                     color: Colors.grey,
                   ),
           ),
-          errorStyle: const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+          errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           fillColor: Colors.white,
           filled: true,
           hintText: 'PASSWORD',
@@ -157,8 +153,7 @@ class _AdminloginState extends State<Adminlogin> {
       },
       controller: phonecont,
       decoration: InputDecoration(
-          errorStyle: const TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+          errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           fillColor: Colors.white,
           filled: true,
           hintText: 'Phone Number',
@@ -177,14 +172,12 @@ class _AdminloginState extends State<Adminlogin> {
         },
         controller: otpcont,
         decoration: InputDecoration(
-            errorStyle: const TextStyle(
-                color: Colors.white, fontWeight: FontWeight.bold),
+            errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
             hintText: 'OTP',
             filled: true,
             fillColor: Colors.white,
             prefixIcon: const Icon(Icons.privacy_tip_outlined),
-            border:
-                OutlineInputBorder(borderRadius: BorderRadius.circular(30))))
+            border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))))
   ];
   @override
   void dispose() {
@@ -201,8 +194,7 @@ class _AdminloginState extends State<Adminlogin> {
       onWillPop: () async => false,
       child: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(
-              image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
         ),
         child: SafeArea(
           child: Scaffold(
@@ -224,8 +216,7 @@ class _AdminloginState extends State<Adminlogin> {
             ),
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -243,8 +234,7 @@ class _AdminloginState extends State<Adminlogin> {
                               primary: Colors.blueAccent.shade700,
                               side: BorderSide(width: 3, color: Colors.black),
                               elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                               padding: EdgeInsets.all(20)),
                           onPressed: () {
                             setState(() {
@@ -265,8 +255,7 @@ class _AdminloginState extends State<Adminlogin> {
                               primary: Colors.blueAccent.shade700,
                               side: BorderSide(width: 3, color: Colors.black),
                               elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                               padding: EdgeInsets.all(20)),
                           onPressed: () {
                             setState(() {
@@ -291,9 +280,7 @@ class _AdminloginState extends State<Adminlogin> {
                       // key: _formKey,
                       children: [
                         Column(
-                          children: (selection == Selected.email)
-                              ? emailSpace
-                              : phoneSpace,
+                          children: (selection == Selected.email) ? emailSpace : phoneSpace,
                         ),
                         const SizedBox(
                           height: 30,
@@ -311,16 +298,13 @@ class _AdminloginState extends State<Adminlogin> {
                           //obscureText: hidePassword,
                           controller: vehiclecont,
                           decoration: InputDecoration(
-                              errorStyle: const TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 16),
+                              errorStyle:
+                                  const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
                               fillColor: Colors.white,
                               filled: true,
                               hintText: 'VEHICLE ID',
                               prefixIcon: const Icon(Icons.key),
-                              border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(30))),
+                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
                         ),
                         SizedBox(
                           height: 30,
@@ -330,22 +314,16 @@ class _AdminloginState extends State<Adminlogin> {
                               primary: Colors.blueAccent.shade700,
                               side: BorderSide(width: 3, color: Colors.black),
                               elevation: 3,
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30)),
+                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                               padding: EdgeInsets.all(20)),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              emailPasswordSignIn(
-                                  emailcont.value.text.toString(),
-                                  passcont.value.text.toString());
+                              emailPasswordSignIn(emailcont.value.text.toString(), passcont.value.text.toString());
                             }
                           },
                           child: const Text(
                             'log in',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
                           ),
                         ),
                         /*Row(

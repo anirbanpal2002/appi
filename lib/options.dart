@@ -15,9 +15,8 @@ class _OptionsState extends State<Options> {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: Container(
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage("assets/img2.jpg"), fit: BoxFit.cover)),
+          decoration:
+              const BoxDecoration(image: DecorationImage(image: AssetImage("assets/img2.jpg"), fit: BoxFit.cover)),
           child: Form(
             child: Center(
               child: Column(
@@ -29,15 +28,15 @@ class _OptionsState extends State<Options> {
                         primary: Colors.redAccent.shade700,
                         side: const BorderSide(width: 3, color: Colors.white),
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                         padding: const EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Adminlogin()));
+                              builder: (context) => const Adminlogin(),
+                            ));
                       });
                     },
                     child: const Text(
@@ -56,8 +55,7 @@ class _OptionsState extends State<Options> {
                         primary: Colors.redAccent.shade700,
                         side: const BorderSide(width: 3, color: Colors.white),
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
                         padding: const EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {

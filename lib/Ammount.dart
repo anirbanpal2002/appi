@@ -1,4 +1,3 @@
-import 'package:appi/CraditCard.dart';
 import 'package:appi/PaymentScreen.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +14,7 @@ class _AmmountState extends State<Ammount> {
   Widget build(BuildContext context) {
     return Container(
       decoration: const BoxDecoration(
-        image: DecorationImage(
-            image: AssetImage("assets/bg.png"), fit: BoxFit.cover),
+        image: DecorationImage(image: AssetImage("assets/bg.png"), fit: BoxFit.cover),
       ),
       child: Scaffold(
         backgroundColor: Colors.transparent,
@@ -44,16 +42,12 @@ class _AmmountState extends State<Ammount> {
                         primary: Colors.red.shade700,
                         side: BorderSide(width: 0, color: Colors.black),
                         elevation: 3,
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10)),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
                         padding: EdgeInsets.all(20)),
                     onPressed: () {
                       setState(() {
                         setState(() {
-                          Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => PaymentScreen()));
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => PaymentScreen()));
                         });
                       });
                     },
