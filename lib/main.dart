@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:appi/Adminlogin.dart';
+import 'package:appi/Adminsign.dart';
 import 'package:appi/Instruction.dart';
 import 'package:appi/Login.dart';
 import 'package:appi/Registration.dart';
@@ -21,13 +23,15 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      home: Options(), //Google(lat: 22.622508, lon: 88.443714),
+      home: Adminlogin(), //Google(lat: 22.622508, lon: 88.443714),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
         'Trigger': (context) => const MyTrigger(),
         'Instruction': (context) => const Instruction(),
         'login': (context) => const MyLogin(),
+        'Adminlogin': (context) => const Adminlogin(),
+        'Adminsignin': (context) => const Adminsignin(),
       },
     ),
   );
@@ -56,7 +60,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
         ),
         child: Scaffold(
             backgroundColor: Colors.transparent,
@@ -66,7 +71,10 @@ class _SplashScreenState extends State<SplashScreen> {
                   child: const Text(
                     'WELCOME TO APPI',
                     style: TextStyle(
-                        color: Colors.white, fontSize: 25, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        fontSize: 25,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.bold),
                   )),
             ])));
   }
@@ -74,7 +82,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Timer(Duration(seconds: 10),
-        () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MyLogin())));
+    Timer(
+        Duration(seconds: 10),
+        () => Navigator.pushReplacement(
+            context, MaterialPageRoute(builder: (context) => LoginOptions())));
   }
 }

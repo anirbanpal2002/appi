@@ -4,14 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-class MyRegistration extends StatefulWidget {
-  const MyRegistration({Key? key}) : super(key: key);
+class Adminsignin extends StatefulWidget {
+  const Adminsignin({Key? key}) : super(key: key);
 
   @override
-  _MyRegistrationState createState() => _MyRegistrationState();
+  _AdminsigninState createState() => _AdminsigninState();
 }
 
-class _MyRegistrationState extends State<MyRegistration> {
+class _AdminsigninState extends State<Adminsignin> {
   final _regKey = GlobalKey<FormState>();
   TextEditingController passcont = TextEditingController();
   TextEditingController emailcont = TextEditingController();
@@ -230,9 +230,9 @@ class _MyRegistrationState extends State<MyRegistration> {
                           fontSize: 15),
                       fillColor: Colors.white,
                       filled: true,
-                      hintText: "V NUMBER",
+                      hintText: "Hospital id",
                       prefixIcon: const Icon(
-                        Icons.car_rental,
+                        Icons.local_hospital,
                         size: 30,
                       ),
                       border: OutlineInputBorder(

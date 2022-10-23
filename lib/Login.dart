@@ -27,14 +27,14 @@ class _MyLoginState extends State<MyLogin> {
   bool hidePassword = true;
   Selected selection = Selected.email;
 
-  Future<void> emailPasswordSignIn(String Email, String Password) async {
+  Future<void> emailPasswordSignIn(String email, String password) async {
     try {
       passcont.clear();
       emailcont.clear();
       UserCredential userCredential = await FirebaseAuth.instance
-              .signInWithEmailAndPassword(email: Email, password: Password)
-              .then((value) =>
-                  Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => const MyTrigger())))
+              .signInWithEmailAndPassword(email: email, password: password)
+              .then((value) => Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const MyTrigger())))
           as UserCredential;
 
       // Navigator.push(
@@ -76,7 +76,8 @@ class _MyLoginState extends State<MyLogin> {
     final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
 
     // Obtain the auth details from the request
-    final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+    final GoogleSignInAuthentication? googleAuth =
+        await googleUser?.authentication;
 
     // Create a new credential
     final credential = GoogleAuthProvider.credential(
@@ -99,14 +100,15 @@ class _MyLoginState extends State<MyLogin> {
         return null;
       },
       decoration: InputDecoration(
-          errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+          errorStyle: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           fillColor: Colors.white,
           filled: true,
           hintText: 'Email Id',
           prefixIcon: const Icon(Icons.verified_user_rounded),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     ),
-    SizedBox(
+    const SizedBox(
       height: 30,
     ),
     TextFormField(
@@ -126,16 +128,17 @@ class _MyLoginState extends State<MyLogin> {
               //setState(() {});
             },
             icon: _isVisible
-                ? Icon(
+                ? const Icon(
                     Icons.visibility,
                     color: Colors.black,
                   )
-                : Icon(
+                : const Icon(
                     Icons.visibility_off,
                     color: Colors.grey,
                   ),
           ),
-          errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+          errorStyle: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
           fillColor: Colors.white,
           filled: true,
           hintText: 'PASSWORD',
@@ -154,14 +157,15 @@ class _MyLoginState extends State<MyLogin> {
       },
       controller: phonecont,
       decoration: InputDecoration(
-          errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
+          errorStyle: const TextStyle(
+              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15),
           fillColor: Colors.white,
           filled: true,
           hintText: 'Phone Number',
           prefixIcon: const Icon(Icons.phone),
           border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
     ),
-    SizedBox(
+    const SizedBox(
       height: 30,
     ),
     TextFormField(
@@ -170,15 +174,18 @@ class _MyLoginState extends State<MyLogin> {
           if (value == null || value.isEmpty) {
             return "PLEASE ENTER OTP";
           }
+          return null;
         },
         controller: otpcont,
         decoration: InputDecoration(
-            errorStyle: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+            errorStyle: const TextStyle(
+                color: Colors.white, fontWeight: FontWeight.bold),
             hintText: 'OTP',
             filled: true,
             fillColor: Colors.white,
             prefixIcon: const Icon(Icons.privacy_tip_outlined),
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))))
+            border:
+                OutlineInputBorder(borderRadius: BorderRadius.circular(30))))
   ];
   @override
   void dispose() {
@@ -195,13 +202,14 @@ class _MyLoginState extends State<MyLogin> {
       onWillPop: () async => false,
       child: Container(
         decoration: const BoxDecoration(
-          image: DecorationImage(image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
+          image: DecorationImage(
+              image: AssetImage('assets/img2.jpg'), fit: BoxFit.cover),
         ),
         child: SafeArea(
           child: Scaffold(
             resizeToAvoidBottomInset: true,
             appBar: AppBar(
-              actions: [],
+              actions: const [],
               backgroundColor: Colors.transparent,
               elevation: 0.0,
               title: const Text(
@@ -217,7 +225,8 @@ class _MyLoginState extends State<MyLogin> {
             ),
             backgroundColor: Colors.transparent,
             body: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 10.0, vertical: 15.0),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -233,10 +242,12 @@ class _MyLoginState extends State<MyLogin> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.blueAccent.shade700,
-                              side: const BorderSide(width: 3, color: Colors.black),
+                              side: const BorderSide(
+                                  width: 3, color: Colors.black),
                               elevation: 3,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                              padding: EdgeInsets.all(20)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: const EdgeInsets.all(20)),
                           onPressed: () {
                             setState(() {
                               selection = Selected.email;
@@ -254,10 +265,12 @@ class _MyLoginState extends State<MyLogin> {
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.blueAccent.shade700,
-                              side: BorderSide(width: 3, color: Colors.black),
+                              side: const BorderSide(
+                                  width: 3, color: Colors.black),
                               elevation: 3,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                              padding: EdgeInsets.all(20)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: const EdgeInsets.all(20)),
                           onPressed: () {
                             setState(() {
                               selection = Selected.phone;
@@ -281,7 +294,9 @@ class _MyLoginState extends State<MyLogin> {
                       // key: _formKey,
                       children: [
                         Column(
-                          children: (selection == Selected.email) ? emailSpace : phoneSpace,
+                          children: (selection == Selected.email)
+                              ? emailSpace
+                              : phoneSpace,
                         ),
                         const SizedBox(
                           height: 30,
@@ -299,32 +314,42 @@ class _MyLoginState extends State<MyLogin> {
                           //obscureText: hidePassword,
                           controller: vehiclecont,
                           decoration: InputDecoration(
-                              errorStyle:
-                                  const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16),
+                              errorStyle: const TextStyle(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16),
                               fillColor: Colors.white,
                               filled: true,
                               hintText: 'VEHICLE ID',
                               prefixIcon: const Icon(Icons.key),
-                              border: OutlineInputBorder(borderRadius: BorderRadius.circular(30))),
+                              border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30))),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         ElevatedButton(
                           style: ElevatedButton.styleFrom(
                               primary: Colors.blueAccent.shade700,
-                              side: BorderSide(width: 3, color: Colors.black),
+                              side: const BorderSide(
+                                  width: 3, color: Colors.black),
                               elevation: 3,
-                              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-                              padding: EdgeInsets.all(20)),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(30)),
+                              padding: const EdgeInsets.all(20)),
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              emailPasswordSignIn(emailcont.value.text.toString(), passcont.value.text.toString());
+                              emailPasswordSignIn(
+                                  emailcont.value.text.toString(),
+                                  passcont.value.text.toString());
                             }
                           },
                           child: const Text(
                             'log in',
-                            style: TextStyle(color: Colors.white, fontSize: 25, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
                           ),
                         ),
                         /*Row(
