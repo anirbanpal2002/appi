@@ -30,6 +30,8 @@ class _RequestListState extends State<RequestList> {
             list.add(documentSnapshot2.get("CURRENT_LAT"));
             list.add(documentSnapshot2.get("DESTINATION_LONG"));
             list.add(documentSnapshot2.get("DESTINATION_LAT"));
+            list.add(documentSnapshot.id);
+            list.add(documentSnapshot2.id);
             return list;
           }
         });
@@ -57,12 +59,30 @@ class _RequestListState extends State<RequestList> {
                 itemBuilder: (context, index) {
                   return ListTile(
                     leading: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        firebaseFirestore
+                            .collection("Users")
+                            .doc("$data[4]")
+                            .collection("Request")
+                            .doc("$data[5]")
+                            .update({"REQUEST_APPROVE": false}).then((value) {
+                          print("Request Rejected");
+                        });
+                      },
                       child: const Text("REJECT"),
                     ),
                     title: Text("$data[0],$data[1] => $data[2],$data[3]"),
                     trailing: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        firebaseFirestore
+                            .collection("Users")
+                            .doc("$data[4]")
+                            .collection("Request")
+                            .doc("$data[5]")
+                            .update({"REQUEST_APPROVE": true}).then((value) {
+                          print("Request Accepted");
+                        });
+                      },
                       child: const Text("Accept"),
                     ),
                     onTap: () {},
