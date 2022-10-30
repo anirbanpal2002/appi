@@ -10,7 +10,34 @@ class RequestList extends StatefulWidget {
 
 class _RequestListState extends State<RequestList> {
   FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-  Future getRequest() async {}
+  List<String> list = [];
+  Future<List<String>> getRequest() async {
+    firebaseFirestore
+        .collection("Users")
+        .where("VERIFICATION", isEqualTo: true)
+        .get()
+        .then((QuerySnapshot ds) {
+      for (DocumentSnapshot documentSnapshot in ds.docs) {
+        firebaseFirestore
+            .collection("Users")
+            .doc(documentSnapshot.id)
+            .collection("Request")
+            .get()
+            .then((QuerySnapshot element) {
+          for (DocumentSnapshot documentSnapshot2 in element.docs) {
+            list.clear();
+            list.add(documentSnapshot2.get("CURRENT_LONG"));
+            list.add(documentSnapshot2.get("CURRENT_LAT"));
+            list.add(documentSnapshot2.get("DESTINATION_LONG"));
+            list.add(documentSnapshot2.get("DESTINATION_LAT"));
+            return list;
+          }
+        });
+      }
+    });
+    return list;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -19,12 +46,13 @@ class _RequestListState extends State<RequestList> {
         body: FutureBuilder(
           builder: (context, snapshot) {
             if (ConnectionState.active != null && !snapshot.hasData) {
-              return const Center(child: Text("loading"));
+              return const Center(child: Text("loading..."));
             }
             if (ConnectionState.done != null && !snapshot.hasError) {
               return const Center(child: Text("Error"));
             }
             if (ConnectionState.done != null && !snapshot.hasData) {
+              final data = snapshot.data as List<String>;
               return ListView.builder(
                 itemBuilder: (context, index) {
                   return ListTile(
@@ -32,7 +60,7 @@ class _RequestListState extends State<RequestList> {
                       onPressed: () {},
                       child: const Text("REJECT"),
                     ),
-                    title: Text("A -> B"),
+                    title: Text("$data[0],$data[1] => $data[2],$data[3]"),
                     trailing: ElevatedButton(
                       onPressed: () {},
                       child: const Text("Accept"),

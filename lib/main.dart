@@ -5,6 +5,7 @@ import 'package:appi/Adminsign.dart';
 import 'package:appi/Instruction.dart';
 import 'package:appi/Login.dart';
 import 'package:appi/Registration.dart';
+import 'package:appi/Request_List.dart';
 import 'package:appi/Trigger.dart';
 import 'package:appi/options.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -23,7 +24,7 @@ Future<void> main() async {
 
   runApp(
     MaterialApp(
-      home: Adminlogin(), //Google(lat: 22.622508, lon: 88.443714),
+      home: RequestList(), //Google(lat: 22.622508, lon: 88.443714),
       debugShowCheckedModeBanner: false,
       routes: {
         'Registration': (context) => const MyRegistration(),
