@@ -69,7 +69,7 @@ class _RequestListState extends State<RequestList> {
                           print("Request Rejected");
                         });
                       },
-                      child: const Text("REJECTT"),
+                      child: const Text("REJECT"),
                     ),
                     title: Text("$data[0],$data[1] => $data[2],$data[3]"),
                     trailing: ElevatedButton(
